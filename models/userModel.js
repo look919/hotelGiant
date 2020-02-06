@@ -17,7 +17,8 @@ const userSchema = new mongoose.Schema({
   hotel: String,
   room: {
     type: mongoose.Schema.ObjectId,
-    ref: 'Room'
+    ref: 'Room',
+    select: 'name'
   },
   days: Number,
   expenses: {
@@ -66,6 +67,13 @@ userSchema.pre('save', function(next) {
   next();
 });
 
+userSchema.pre(/^find/, async function(next) {
+  this.populate({
+    path: 'room',
+    select: 'name price features'
+  });
+  next();
+});
 userSchema.methods.correctPassword = async function(
   candidatePassword,
   userPassword

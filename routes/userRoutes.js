@@ -9,6 +9,9 @@ router.post('/login', authController.login);
 router.post('/logout', authController.logout);
 
 router.use(authController.protect);
+
+router.patch('/updatepassword', authController.updatePassword);
+
 router.use(authController.restrictTo('admin'));
 
 router.route('/').get(userController.getAllUsers);
