@@ -1,0 +1,50 @@
+.locations {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
+  padding: 0 15rem;
+  margin-bottom: 7rem;
+
+  &__heading {
+    color: $color-white;
+    margin-bottom: 4rem;
+  }
+  &__list {
+    list-style-type: none;
+    align-self: center;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+  &__item {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 15rem;
+
+    &__info {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      &--town {
+        font-size: 1.4rem;
+      }
+      &--street {
+        font-size: 1.2rem;
+      }
+    }
+  }
+  &__pin {
+    height: 2.5rem;
+    width: 2.5rem;
+    fill: $color-white;
+
+    &:hover {
+      animation: pulse 1s ease-out infinite both;
+      fill: $color-secondary;
+    }
+  }
+}

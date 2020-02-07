@@ -1,0 +1,186 @@
+.bookpage {
+  grid-row: 3 / 4;
+  grid-column: 1 / -1;
+
+  background-image: linear-gradient(
+      to right,
+      rgba($color-primary, 0.8),
+      rgba($color-primary-dark, 0.8)
+    ),
+    url("../img/header.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  display: grid;
+  grid-template-rows: 1fr 3fr;
+  grid-template-columns: repeat(2, 1fr);
+  align-items: end;
+
+  padding: 1.5rem 4rem;
+
+  &__logo {
+    object-fit: cover;
+
+    animation: showUp 2s ease-in-out 1s both;
+  }
+  &__heading {
+    font-size: 6.5rem;
+    align-self: start;
+    justify-self: right;
+    margin-top: 2rem;
+  }
+  &__form {
+    grid-row: 2 / 3;
+    grid-column: 1 / -1;
+
+    display: grid;
+    grid-template-rows: 2fr repeat(4, 1fr);
+    grid-template-columns: 2fr 2fr 3fr;
+    grid-gap: 2rem;
+
+    &__subheading {
+      align-self: start;
+      grid-row: 1 / 3;
+      grid-column: 1 / 3;
+      padding-left: 1rem;
+      font-style: italic;
+    }
+    &__select {
+      display: block;
+      grid-row: 1 / 2;
+      grid-column: 3 / 4;
+
+      text-align-last: center;
+      color: $color-grey-light-1;
+      font-size: 1.6rem;
+      padding: 0.4rem 1.2rem;
+
+      background-color: $color-primary-dark;
+      border: 1px solid $color-grey-light-2;
+      border-radius: 25%;
+
+      &__item {
+        display: block;
+        text-align-last: center;
+        text-align: center;
+
+        padding: 0.3rem 0.8rem;
+
+        background-color: $color-primary-dark;
+        border: 1px solid $color-grey-light-2;
+        border-radius: 10%;
+      }
+
+      &:focus {
+        outline: none;
+      }
+    }
+
+    &__input,
+    &__textarea,
+    &__button {
+      font-size: 1.6rem;
+      border: 1px solid $color-grey-light-2;
+      border-radius: 1rem;
+
+      width: 100%;
+      padding: 0.4rem 1.2rem;
+      resize: none;
+      color: $color-grey-light-1;
+
+      transition: all 0.4s;
+
+      &:placeholder-shown {
+        background-image: linear-gradient(
+          to left bottom,
+          rgba($color-primary, 0.8),
+          rgba($color-primary-dark, 0.8)
+        );
+        background-color: none;
+      }
+      background-color: $color-primary-dark;
+      background-image: none;
+
+      &:focus {
+        outline: none;
+        transform: translateX(0.6rem);
+        border: 3px solid darken($color-primary-dark, 20%);
+      }
+    }
+
+    &__input {
+      &--name {
+        grid-row: 2 / 3;
+        grid-column: 1 / 2;
+      }
+      &--vorname {
+        grid-row: 3 / 4;
+        grid-column: 1 / 2;
+      }
+      &--phone {
+        grid-row: 4 / 5;
+        grid-column: 1 / 2;
+      }
+      &--email {
+        grid-row: 5 / 6;
+        grid-column: 1 / 2;
+      }
+      &--country {
+        grid-row: 2 / 3;
+        grid-column: 2 / 3;
+      }
+      &--town {
+        grid-row: 3 / 4;
+        grid-column: 2 / 3;
+      }
+      &--zip {
+        grid-row: 4 / 5;
+        grid-column: 2 / 3;
+      }
+      &--address {
+        grid-row: 5 / 6;
+        grid-column: 2 / 3;
+      }
+    }
+    &__textarea {
+      padding: 1.2rem 2rem;
+      grid-row: 2 / 5;
+      grid-column: 3 / 4;
+      color: $color-black;
+      font-size: 1.8rem;
+    }
+    &__button {
+      grid-row: 5 / 6;
+      grid-column: 3 / 4;
+      cursor: pointer;
+
+      background-image: linear-gradient(
+        to right bottom,
+        rgba($color-secondary-dark, 0.7),
+        rgba($color-secondary-dark, 1)
+      );
+    }
+  }
+}
+
+.bookpage__nav {
+  grid-row: 1 / 2;
+  grid-column: 1 / -1;
+
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 100%;
+  width: 20%;
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 15;
+
+  background-image: linear-gradient(
+    to right bottom,
+    rgba($color-secondary, 1),
+    rgba($color-secondary-dark, 1)
+  );
+}

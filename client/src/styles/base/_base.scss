@@ -1,0 +1,46 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  box-sizing: border-box;
+}
+
+.container {
+  display: grid;
+  position: relative;
+  grid-template-rows:
+    [header-start nav-start] 100vh [header-end nav-end description-start] min-content
+    [description-end locationsAndFeatures-start] min-content [locationsAndFeatures-end rooms-start]
+    min-content [rooms-end reviews-start] min-content [reviews-end contact-start] min-content [contact-end gallery-start]
+    max-content [gallery-end footer-start] 12rem [footer-end];
+  grid-template-columns:
+    [full-start] 8rem [center-start] 14rem repeat(5, 1fr)
+    14rem [center-end] 8rem [full-end nav-start] 8rem [nav-end];
+  grid-row-gap: 8rem;
+
+  &--bookPage {
+    display: grid;
+    grid-template-rows: 7rem min-content 100vh;
+    grid-template-columns: [full-start] 1fr [full-end]; //functionality for rooms
+
+    background-image: linear-gradient(
+      to right bottom,
+      $color-white,
+      rgba($color-grey-light-2, 0.7)
+    );
+  }
+}
+
+::selection {
+  background-color: $color-primary-dark;
+  color: $color-secondary-dark;
+}
