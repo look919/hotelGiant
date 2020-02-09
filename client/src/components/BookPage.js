@@ -28,103 +28,103 @@ class BookPage extends React.Component {
     const hash = window.location.hash.substr(1);
 
     return (
-      <div className='container--bookPage'>
-        <nav className='bookpage__nav'>
-          <NavLink to='/' className='sidenav__users'>
+      <div className="container--bookPage">
+        <nav className="bookpage__nav">
+          <NavLink to="/" className="sidenav__users">
             <ArrowLeft />
-            <label className='sidenav__users__label'>Main page</label>
+            <label className="sidenav__users__label">Main page</label>
           </NavLink>
-          <NavLink to='/bookpage' className='sidenav__book'>
+          <NavLink to="/loginpage" className="sidenav__book">
             <UsersIcon />
-            <label className='sidenav__users__label'>Guest panel</label>
+            <label className="sidenav__users__label">Guest panel</label>
           </NavLink>
         </nav>
         <Rooms booking={true} />
 
-        <div className='bookpage'>
-          <img src={Logo} className='bookpage__logo' alt='logo' />
-          <h1 className='heading-1 bookpage__heading'>Book a room</h1>
+        <div className="bookpage">
+          <img src={Logo} className="bookpage__logo" alt="logo" />
+          <h1 className="heading-1 bookpage__heading">Book a room</h1>
 
-          <form className='bookpage__form'>
-            <h3 className='heading-3 bookpage__form__subheading'>
+          <form className="bookpage__form">
+            <h3 className="heading-3 bookpage__form__subheading">
               Make your dreams come true...
             </h3>
-            <select className='bookpage__form__select' defaultValue={hash}>
-              <option className='bookpage__form__select__item' value='Roomnr1'>
+            <select className="bookpage__form__select" defaultValue={hash}>
+              <option className="bookpage__form__select__item" value="Roomnr1">
                 Room nr 1
               </option>
-              <option className='bookpage__form__select__item' value='Roomnr2'>
+              <option className="bookpage__form__select__item" value="Roomnr2">
                 Room nr 2
               </option>
-              <option className='bookpage__form__select__item' value='Roomnr3'>
+              <option className="bookpage__form__select__item" value="Roomnr3">
                 Room nr 3
               </option>
               <option
-                className='bookpage__form__select__item'
-                value='Doublebedroom'
+                className="bookpage__form__select__item"
+                value="Doublebedroom"
               >
                 Double bed room
               </option>
               <option
-                className='bookpage__form__select__item'
-                value='Familyroom(max4people)'
+                className="bookpage__form__select__item"
+                value="Familyroom(max4people)"
               >
                 Family room (max 4 people)
               </option>
               <option
-                className='bookpage__form__select__item'
-                value='Apartament'
+                className="bookpage__form__select__item"
+                value="Apartament"
               >
                 Apartament
               </option>
             </select>
             <input
-              className='bookpage__form__input bookpage__form__input--name'
-              placeholder='Name'
-              name='fname'
+              className="bookpage__form__input bookpage__form__input--name"
+              placeholder="Name"
+              name="fname"
             />
             <input
-              type='text'
-              className='bookpage__form__input bookpage__form__input--vorname'
-              placeholder='Vorname'
-              name='lname'
+              type="text"
+              className="bookpage__form__input bookpage__form__input--vorname"
+              placeholder="Vorname"
+              name="lname"
             />
             <input
-              type='tel'
-              placeholder='Phone'
-              className='bookpage__form__input bookpage__form__input--phone'
+              type="tel"
+              placeholder="Phone"
+              className="bookpage__form__input bookpage__form__input--phone"
             />
             <input
-              type='email'
-              placeholder='Email'
-              className='bookpage__form__input bookpage__form__input--email'
+              type="email"
+              placeholder="Email"
+              className="bookpage__form__input bookpage__form__input--email"
             />
             <input
-              type='text'
-              placeholder='Country'
-              className='bookpage__form__input bookpage__form__input--country'
+              type="text"
+              placeholder="Country"
+              className="bookpage__form__input bookpage__form__input--country"
             />
             <input
-              type='text'
-              placeholder='Town'
-              className='bookpage__form__input bookpage__form__input--town'
+              type="text"
+              placeholder="Town"
+              className="bookpage__form__input bookpage__form__input--town"
             />
             <input
-              type='text'
-              placeholder='Zip Code'
-              className='bookpage__form__input bookpage__form__input--zip'
+              type="text"
+              placeholder="Zip Code"
+              className="bookpage__form__input bookpage__form__input--zip"
             />
             <input
-              type='text'
-              placeholder='Address'
-              className='bookpage__form__input bookpage__form__input--address'
+              type="text"
+              placeholder="Address"
+              className="bookpage__form__input bookpage__form__input--address"
             />
             <textarea
-              className='bookpage__form__textarea'
-              placeholder='Any '
+              className="bookpage__form__textarea"
+              placeholder="Any "
             ></textarea>
 
-            <button className='bookpage__form__button'>Submit</button>
+            <button className="bookpage__form__button">Submit</button>
           </form>
         </div>
       </div>

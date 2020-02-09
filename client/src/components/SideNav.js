@@ -1,8 +1,8 @@
-import React from "react";
-import { Link } from "react-scroll";
-import { NavLink } from "react-router-dom";
+import React from 'react';
+import { Link } from 'react-scroll';
+import { NavLink } from 'react-router-dom';
 
-import { UsersIcon, PurchaseIcon } from "../img/Icons";
+import { UsersIcon, PurchaseIcon } from '../img/Icons';
 
 const SideNav = () => (
   <section className="sidenav">
@@ -89,7 +89,7 @@ const SideNav = () => (
         <PurchaseIcon />
         <label className="sidenav__users__label">Book Now!</label>
       </NavLink>
-      <NavLink to="/bookpage" className="sidenav__users">
+      <NavLink to="/loginpage" className="sidenav__users">
         <UsersIcon />
         <label className="sidenav__users__label">Guest panel</label>
       </NavLink>
