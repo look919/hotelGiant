@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { setAlert } from '../actions/alert';
+import PropTypes from 'prop-types';
 
 import { PurchaseIcon, ArrowLeft } from '../img/Icons';
 
-const LoginPage = () => {
+const LoginPage = ({ setAlert }) => {
   const [formData, setFormData] = useState({
     login: '',
     password: ''
@@ -13,7 +16,7 @@ const LoginPage = () => {
 
   const onSubmit = async e => {
     e.preventDefault();
-    console.log(formData);
+    setAlert('Login', 'success', 3000);
   };
 
   const { login, password } = formData;
@@ -58,5 +61,8 @@ const LoginPage = () => {
     </div>
   );
 };
+LoginPage.propTypes = {
+  setAlert: PropTypes.func.isRequired
+};
 
-export default LoginPage;
+export default connect(null, { setAlert })(LoginPage);

@@ -10,7 +10,7 @@
       rgba($color-primary, 0.8),
       rgba($color-primary-dark, 0.8)
     ),
-    url("../img/header.jpg");
+    url('../img/header.jpg');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -24,7 +24,7 @@
   &__logo {
     width: auto;
 
-    animation: showUp 2s ease-in-out 4s both;
+    animation: showUp 2s ease-in-out 1s both;
   }
 
   &__headings {
@@ -51,7 +51,7 @@
     justify-content: center;
     align-items: center;
 
-    animation: showUp 2s ease-in-out 4.5s both;
+    animation: showUp 2s ease-in-out 1s both;
 
     &__icons {
       display: flex;
