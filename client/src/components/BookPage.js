@@ -24,7 +24,6 @@ class BookPage extends React.Component {
     };
   }
   render() {
-    console.log(window.location.hash);
     const hash = window.location.hash.substr(1);
 
     return (

@@ -1,0 +1,28 @@
+.guestPage {
+  &__info {
+    background-image: linear-gradient(
+      to right bottom,
+      rgba($color-secondary-dark, 1),
+      rgba($color-secondary, 1)
+    );
+    border-left: 1px solid $color-grey-dark-1;
+    border-right: 1px solid $color-grey-dark-1;
+
+    &__nav {
+      margin-top: 2rem;
+      display: flex;
+      justify-content: space-around;
+
+      &__btn {
+        width: 40%;
+        padding: 1rem 2rem;
+        color: $color-black;
+        font-family: $font-primary;
+        font-size: 1.6rem;
+
+        border: 1px solid $color-grey-light-2;
+        border-radius: 2px;
+      }
+    }
+  }
+}

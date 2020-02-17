@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { setAlert } from '../actions/alert';
+import { login } from '../actions/auth';
+
 import PropTypes from 'prop-types';
 
 import { PurchaseIcon, ArrowLeft } from '../img/Icons';
 
-const LoginPage = ({ setAlert }) => {
+const LoginPage = ({ login, auth }) => {
   const [formData, setFormData] = useState({
     login: '',
     password: ''
@@ -16,13 +17,16 @@ const LoginPage = ({ setAlert }) => {
 
   const onSubmit = async e => {
     e.preventDefault();
-    setAlert('Login', 'success', 3000);
+
+    login(formData.login, formData.password);
   };
 
-  const { login, password } = formData;
+  if (auth) {
+    return <Redirect to={'/guestPage'} />;
+  }
 
   return (
-    <div className="container--loginPage">
+    <section className="container--loginPage">
       <nav className="loginpage__nav">
         <NavLink to="/" className="sidenav__users">
           <ArrowLeft />
@@ -40,7 +44,7 @@ const LoginPage = ({ setAlert }) => {
           className="loginpage__input"
           placeholder="login"
           name="login"
-          value={login}
+          value={formData.login}
           onChange={e => onChange(e)}
           required
         />
@@ -51,18 +55,23 @@ const LoginPage = ({ setAlert }) => {
             placeholder="password"
             minLength="8"
             name="password"
-            value={password}
+            value={formData.password}
             onChange={e => onChange(e)}
             required
           />
         </div>
         <input type="submit" className="btn loginpage__btn" value="Login" />
       </form>
-    </div>
+    </section>
   );
 };
 LoginPage.propTypes = {
-  setAlert: PropTypes.func.isRequired
+  login: PropTypes.func.isRequired,
+  auth: PropTypes.bool
 };
 
-export default connect(null, { setAlert })(LoginPage);
+const mapStateToProps = state => ({
+  auth: state.auth.isAuthenticated
+});
+
+export default connect(mapStateToProps, { login })(LoginPage);

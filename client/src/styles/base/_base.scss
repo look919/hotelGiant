@@ -41,6 +41,9 @@ body {
 
   &--loginPage {
     height: 100vh;
+    min-width: 100vw;
+    max-width: 100vw;
+    overflow: hidden;
     background-image: linear-gradient(
         105deg,
         rgba($color-primary, 0.7) 0%,
@@ -52,6 +55,23 @@ body {
     background-position: center;
     border: 1px solid $color-grey-light-2;
     border-radius: 0.5rem;
+  }
+  &--guestPage {
+    height: 100vh;
+    max-width: 100vw;
+    overflow: hidden;
+    background-image: linear-gradient(
+        to right,
+        rgba($color-primary, 0.8),
+        rgba($color-primary-dark, 0.8)
+      ),
+      url('../img/header.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    display: grid;
+    grid-template-columns: 2fr 2fr 1fr;
   }
 }
 

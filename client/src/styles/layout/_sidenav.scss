@@ -54,7 +54,7 @@
     }
     &::before,
     &::after {
-      content: "";
+      content: '';
       position: absolute;
       left: 0;
       transition: all 0.2s;
@@ -141,11 +141,16 @@
     justify-items: center;
     cursor: pointer;
     padding: 1rem 0;
+    background: none;
+    border: none;
 
     transition: all 0.3s;
 
     &:hover {
       transform: scale(1.1);
+    }
+    &:focus {
+      outline: none;
     }
 
     &__icon {
