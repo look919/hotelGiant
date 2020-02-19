@@ -1,5 +1,4 @@
-import React from "react";
-import Locations from "./Locations";
+import React from 'react';
 
 import {
   HomeIcon,
@@ -8,13 +7,13 @@ import {
   DisabledIcon,
   StatsIcon,
   FoodIcon
-} from "../img/Icons";
+} from '../img/Icons';
 
 const Features = () => (
   <section className="features">
-    <Locations />
+    <h2 className="heading-2">Features</h2>
+
     <div className="features__container">
-      <h4 className="heading-4 features__heading">Features:</h4>
       <div className="features__content">
         <div className="features__content__item">
           <HomeIcon />

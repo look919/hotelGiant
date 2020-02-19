@@ -3,6 +3,7 @@ import React from 'react';
 import Header from './Header';
 import SideNav from './SideNav';
 import Description from './Description';
+import Locations from './Locations';
 import Features from './Features';
 import Rooms from './Rooms';
 import Reviews from './Reviews';
@@ -16,6 +17,7 @@ const DashboardPage = () => {
       <Header />
       <SideNav />
       <Description />
+      <Locations />
       <Features />
       <Rooms />
       <Reviews />

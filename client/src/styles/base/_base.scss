@@ -19,7 +19,7 @@ body {
   position: relative;
   grid-template-rows:
     [header-start nav-start] 100vh [header-end nav-end description-start] min-content
-    [description-end locationsAndFeatures-start] min-content [locationsAndFeatures-end rooms-start]
+    [description-end locations-start] min-content [locations-end features-start] min-content[features-end rooms-start]
     min-content [rooms-end reviews-start] min-content [reviews-end contact-start] min-content [contact-end gallery-start]
     max-content [gallery-end footer-start] 12rem [footer-end];
   grid-template-columns:
@@ -61,17 +61,19 @@ body {
     max-width: 100vw;
     overflow: hidden;
     background-image: linear-gradient(
-        to right,
-        rgba($color-primary, 0.8),
-        rgba($color-primary-dark, 0.8)
-      ),
-      url('../img/header.jpg');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+      to right bottom,
+      rgba($color-primary, 1),
+      rgba($color-primary-dark, 1)
+    );
+
+    background: radial-gradient(
+      circle,
+      rgba($color-primary, 1) 0%,
+      rgba($color-primary-dark, 1) 50%
+    );
 
     display: grid;
-    grid-template-columns: 2fr 2fr 1fr;
+    grid-template-columns: 4fr 1fr;
   }
 }
 

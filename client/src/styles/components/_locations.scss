@@ -1,10 +1,17 @@
 .locations {
+  grid-column: center-start / center-end;
+  align-self: center;
+  justify-self: center;
+
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   text-align: center;
-  padding: 0 15rem;
-  margin-bottom: 7rem;
+
+  &__map {
+    padding: 1rem;
+    outline: 1rem dashed $color-primary;
+  }
 
   &__heading {
     color: $color-white;
@@ -22,25 +29,26 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    width: 15rem;
+    width: 2rem;
+    height: 1rem;
 
     &__info {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
+      text-align: center;
 
       &--town {
-        font-size: 1.4rem;
-      }
-      &--street {
+        color: darken($color-primary-dark, 20%);
         font-size: 1.2rem;
+        letter-spacing: 1px;
+
+        font-family: $font-display;
       }
     }
   }
   &__pin {
     height: 2.5rem;
     width: 2.5rem;
-    fill: $color-white;
+    fill: $color-primary-dark;
+    margin-bottom: -0.5rem;
 
     &:hover {
       animation: pulse 1s ease-out infinite both;

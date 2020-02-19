@@ -18,17 +18,9 @@ const userSchema = new mongoose.Schema({
   room: {
     type: mongoose.Schema.ObjectId,
     ref: 'Room',
-    select: 'name'
+    select: 'name, price, features'
   },
   days: Number,
-  expenses: {
-    type: [
-      {
-        expense: String,
-        cost: Number
-      }
-    ]
-  },
   password: {
     type: String,
     required: [true, 'password is required'],
@@ -44,6 +36,14 @@ const userSchema = new mongoose.Schema({
       },
       message: 'Passwords are not the same'
     }
+  },
+  expenses: {
+    type: [
+      {
+        expense: String,
+        cost: Number
+      }
+    ]
   },
   passwordChangedAt: Date,
   passwordResetToken: String,
@@ -72,8 +72,10 @@ userSchema.pre(/^find/, async function(next) {
     path: 'room',
     select: 'name price features'
   });
+
   next();
 });
+
 userSchema.methods.correctPassword = async function(
   candidatePassword,
   userPassword

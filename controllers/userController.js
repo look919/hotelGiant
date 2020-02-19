@@ -1,5 +1,6 @@
 const User = require('./../models/userModel');
 const factory = require('./handlerFactory');
+const catchAsync = require('./../utils/catchAsync');
 
 exports.getMe = (req, res, next) => {
   req.params.id = req.user.id;

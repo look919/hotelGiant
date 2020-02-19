@@ -20,7 +20,6 @@ export const loadUser = () => async dispatch => {
 
   try {
     const res = await axios.get('/api/v1/users/auth');
-    console.log(res.data.user);
     dispatch({
       type: AUTH_SUCCESS,
       payload: res.data.user
@@ -69,7 +68,6 @@ export const login = (login, password) => async dispatch => {
       payload: res.data
     });
   } catch (err) {
-    console.log(err.response);
     dispatch(setAlert(err.response.data.message, 'danger'));
     dispatch({
       type: LOGIN_FAIL,
