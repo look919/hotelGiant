@@ -76,6 +76,17 @@ const GuestPage = ({ auth, user, logout }) => {
             <ArrowLeft />
             <label className="sidenav__users__label">Main page</label>
           </NavLink>
+          {user.role === 'user' ? (
+            <NavLink to="/updatepassword" className="sidenav__users">
+              <UsersIcon />
+              <label className="sidenav__users__label">Change password</label>
+            </NavLink>
+          ) : (
+            <NavLink to="/" className="sidenav__users">
+              <ArrowLeft />
+              <label className="sidenav__users__label">Main page</label>
+            </NavLink>
+          )}
           <button onClick={e => onSubmit(e)} className="sidenav__book">
             <UsersIcon />
             <label className="sidenav__users__label">Logout</label>

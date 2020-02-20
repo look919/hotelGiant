@@ -16,7 +16,11 @@
       rgba($color-primary-dark, 0.9),
       rgba($color-primary, 0.9)
     );
-
+    background: radial-gradient(
+      circle,
+      rgba($color-primary, 0.9) 0%,
+      rgba($color-primary-dark, 0.9) 50%
+    );
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(45rem, 1fr));
     grid-gap: 3rem;

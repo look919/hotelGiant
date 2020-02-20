@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { getAllRooms } from './../actions/rooms';
@@ -11,7 +11,7 @@ import DoubleRoom from '../img/room-double.jpg';
 import FamilyRoom from '../img/family-room.jpg';
 import Apartament from '../img/apartament.jpg';
 
-const Rooms = ({ rooms, getAllRooms }) => {
+const Rooms = ({ rooms, getAllRooms, booking }) => {
   useEffect(() => {
     getAllRooms();
   }, [getAllRooms]);
@@ -22,6 +22,18 @@ const Rooms = ({ rooms, getAllRooms }) => {
         Check our rooms!
       </h2>
       <div className="rooms__content">
+        {rooms.results &&
+          rooms.data.data.map(room => (
+            <SingleRoom
+              key={room.name}
+              //img={RoomOne}
+              name={room.name}
+              price={room.price}
+              size={room.size}
+              features={room.features}
+              booking={booking}
+            />
+          ))}
         <SingleRoom
           img={RoomOne}
           name={'Room nr 1'}

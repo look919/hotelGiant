@@ -10,6 +10,7 @@ import DashboardPage from './DashboardPage';
 import BookPage from './BookPage';
 import LoginPage from './LoginPage';
 import GuestPage from './GuestPage';
+import UpdatePassword from './UpdatePassword';
 
 const App = () => {
   if (localStorage.token) {
@@ -28,6 +29,7 @@ const App = () => {
             <Route path="/bookPage" component={BookPage} />>
             <Route path="/loginpage" component={LoginPage} />>
             <Route path="/guestPage" component={GuestPage} />>
+            <Route path="/updatePassword" component={UpdatePassword} />>
           </Switch>
         </div>
       </BrowserRouter>

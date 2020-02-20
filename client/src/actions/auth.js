@@ -9,7 +9,9 @@ import {
   LOGIN_FAIL,
   AUTH_SUCCESS,
   AUTH_FAIL,
-  LOGOUT
+  LOGOUT,
+  UPDATE_PASSWORD_SUCCESS,
+  UPDATE_PASSWORD_FAIL
 } from './types';
 
 // Load User
@@ -76,8 +78,38 @@ export const login = (login, password) => async dispatch => {
   }
 };
 
+//logout user
 export const logout = () => async dispatch => {
   dispatch({
     type: LOGOUT
   });
+};
+
+//updatePassword
+export const updatePassword = (
+  currentPassword,
+  password,
+  passwordConfirm
+) => async dispatch => {
+  const body = JSON.stringify({ currentPassword, password, passwordConfirm });
+
+  const config = {
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  };
+  try {
+    const res = await axios.patch('/api/v1/users/updatepassword', body, config);
+    dispatch({
+      type: UPDATE_PASSWORD_SUCCESS,
+      payload: res.data
+    });
+    dispatch(setAlert('Password changed successfully', 'success'));
+  } catch (err) {
+    dispatch(setAlert(err.response.data.message, 'danger'));
+    dispatch({
+      type: UPDATE_PASSWORD_FAIL,
+      payload: err.message
+    });
+  }
 };

@@ -1,5 +1,5 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 import {
   KeyIcon,
@@ -9,14 +9,14 @@ import {
   WifiIcon,
   FoodIcon2,
   AllInclusiveIcon
-} from "../img/Icons";
+} from '../img/Icons';
 
 const SingleRoom = props => {
   const breakfast =
-    props.features[0] === "breakfast" ? props.features[0] : null;
+    props.features[3] === 'Breakfast' ? props.features[3] : null;
 
   const allInclusive =
-    props.features[1] === "All Inclusive" ? props.features[1] : null;
+    props.features[4] === 'All Inclusive' ? props.features[4] : null;
 
   return (
     <div className="single-room">
@@ -24,7 +24,7 @@ const SingleRoom = props => {
       <img src={props.img} className="single-room__photo" alt="room-img" />
       {!props.booking ? (
         <Link
-          to={`/bookPage#${props.name.replace(/ /g, "")}`}
+          to={`/bookPage#${props.name.replace(/ /g, '')}`}
           className="btn single-room__btn"
         >
           Book Now

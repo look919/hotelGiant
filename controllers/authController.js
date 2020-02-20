@@ -142,9 +142,6 @@ exports.isLoggedIn = async (req, res, next) => {
         return next();
       }
 
-      // THERE IS A LOGGED IN USER
-      res.locals.user = currentUser;
-
       res.status(200).json({ user: currentUser });
     } catch (err) {
       return next();
@@ -167,17 +164,18 @@ exports.restrictTo = (...roles) => {
 };
 
 exports.updatePassword = catchAsync(async (req, res, next) => {
+  const { currentPassword, password, passwordConfirm } = req.body;
+
   // 1) Get user from collection
   const user = await User.findById(req.user.id).select('+password');
 
   // 2) Check if POSTed current password is correct
-  if (!(await user.correctPassword(req.body.currentPassword, user.password))) {
+  if (!(await user.correctPassword(currentPassword, user.password))) {
     return next(new AppError('Your current password is wrong.', 401));
   }
-
   // 3) If so, update password
-  user.password = req.body.password;
-  user.passwordConfirm = req.body.passwordConfirm;
+  user.password = password;
+  user.passwordConfirm = passwordConfirm;
   await user.save();
   // User.findByIdAndUpdate will NOT work as intended!
 

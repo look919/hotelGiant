@@ -60,11 +60,6 @@ body {
     height: 100vh;
     max-width: 100vw;
     overflow: hidden;
-    background-image: linear-gradient(
-      to right bottom,
-      rgba($color-primary, 1),
-      rgba($color-primary-dark, 1)
-    );
 
     background: radial-gradient(
       circle,

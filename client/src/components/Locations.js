@@ -31,14 +31,13 @@ export const Locations = () => {
     }
   ];
 
-  const [viewport, setViewport] = useState({
+  const [viewport] = useState({
     latitude: 47.2000338,
     longitude: 13.199959,
     width: '1000px',
     height: '700px',
     zoom: 4
   });
-
   return (
     <section className="locations">
       <h2 className="heading-2">You can find us all over the Europe</h2>
@@ -46,9 +45,6 @@ export const Locations = () => {
         {...viewport}
         mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
         mapStyle={'mapbox://styles/wirkus919/ck6rtz1ff4syj1ioftcz8tu7j'}
-        onViewportChange={viewport => {
-          setViewport(viewport);
-        }}
         className="locations__map"
       >
         {hotels.map(hotel => (
