@@ -34,8 +34,22 @@ export const loadUser = () => async dispatch => {
 };
 
 //register User
-export const register = ({ login, password }) => async dispatch => {
-  const body = JSON.stringify({ login, password });
+export const register = ({
+  login,
+  password,
+  passwordConfirm,
+  hotel,
+  room,
+  days
+}) => async dispatch => {
+  const body = JSON.stringify({
+    login,
+    password,
+    passwordConfirm,
+    hotel,
+    room,
+    days
+  });
   const config = {
     headers: {
       'Content-Type': 'application/json'
@@ -48,6 +62,7 @@ export const register = ({ login, password }) => async dispatch => {
       payload: res.data
     });
   } catch (err) {
+    dispatch(setAlert(err.response.data.message, 'danger'));
     dispatch({
       type: REGISTER_FAIL,
       payload: err.message

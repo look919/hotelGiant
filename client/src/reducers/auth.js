@@ -25,7 +25,6 @@ export default function(state = initialState, action) {
         isAuthenticated: true,
         user: payload
       };
-    case REGISTER_SUCCESS:
     case LOGIN_SUCCESS:
     case UPDATE_PASSWORD_SUCCESS:
       localStorage.setItem('token', payload.token);
@@ -34,7 +33,6 @@ export default function(state = initialState, action) {
         user: payload.data.user,
         isAuthenticated: true
       };
-    case REGISTER_FAIL:
     case LOGIN_FAIL:
     case AUTH_FAIL:
     case LOGOUT:
@@ -46,6 +44,8 @@ export default function(state = initialState, action) {
         user: null
       };
     case UPDATE_PASSWORD_FAIL:
+    case REGISTER_SUCCESS:
+    case REGISTER_FAIL:
       return state;
     default:
       return state;

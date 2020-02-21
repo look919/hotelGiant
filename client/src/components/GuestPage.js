@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { NavLink, Redirect } from 'react-router-dom';
-import { UsersIcon, ArrowLeft } from '../img/Icons';
+import { UsersIcon, HomePageIcon, PasswordIcon } from '../img/Icons';
 import { logout } from '../actions/auth';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -11,11 +11,23 @@ import GameRoom from './../img/gallery-gameroom.jpg';
 import Logo from './../img/logo2.png';
 
 const GuestPage = ({ auth, user, logout }) => {
+  useEffect(() => {
+    loadExpenses();
+  });
+
   const onSubmit = async e => {
     e.preventDefault();
     logout();
   };
-
+  const loadExpenses = () => {
+    const userExpenses = user ? user.expenses : [];
+    if (!userExpenses) {
+      userExpenses.push({
+        name: 'Room cost',
+        cost: user.room.cost * user.days
+      });
+    }
+  };
   if (!auth) {
     return <Redirect to={'/'} />;
   }
@@ -73,17 +85,17 @@ const GuestPage = ({ auth, user, logout }) => {
         </div>
         <nav className="guestPage__info__nav">
           <NavLink to="/" className="sidenav__users">
-            <ArrowLeft />
+            <HomePageIcon />
             <label className="sidenav__users__label">Main page</label>
           </NavLink>
           {user.role === 'user' ? (
             <NavLink to="/updatepassword" className="sidenav__users">
-              <UsersIcon />
+              <PasswordIcon />
               <label className="sidenav__users__label">Change password</label>
             </NavLink>
           ) : (
             <NavLink to="/" className="sidenav__users">
-              <ArrowLeft />
+              <PasswordIcon />
               <label className="sidenav__users__label">Main page</label>
             </NavLink>
           )}

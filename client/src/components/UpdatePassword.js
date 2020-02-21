@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { updatePassword } from '../actions/auth';
 import PropTypes from 'prop-types';
 
-import { PurchaseIcon, ArrowLeft } from '../img/Icons';
+import { UsersIcon, ArrowLeft } from '../img/Icons';
 
 const UpdatePassword = ({ auth, updatePassword }) => {
   const [formData, setFormData] = useState({
@@ -37,9 +37,9 @@ const UpdatePassword = ({ auth, updatePassword }) => {
           <ArrowLeft />
           <label className="sidenav__users__label">Main page</label>
         </NavLink>
-        <NavLink to="/bookpage" className="sidenav__book">
-          <PurchaseIcon />
-          <label className="sidenav__users__label">Book Now!</label>
+        <NavLink to="/guestpage" className="sidenav__book">
+          <UsersIcon />
+          <label className="sidenav__users__label">Guest page</label>
         </NavLink>
       </nav>
 

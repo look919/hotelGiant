@@ -21,7 +21,11 @@ const SingleRoom = props => {
   return (
     <div className="single-room">
       <h5 className="single-room__name">{props.name}</h5>
-      <img src={props.img} className="single-room__photo" alt="room-img" />
+      <img
+        src={require(`../img/${props.img}`)}
+        className="single-room__photo"
+        alt="room-img"
+      />
       {!props.booking ? (
         <Link
           to={`/bookPage#${props.name.replace(/ /g, '')}`}

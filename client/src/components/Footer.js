@@ -1,6 +1,8 @@
-import React from "react";
-import { Link } from "react-scroll";
-import Logo from "../img/logo.png";
+import React from 'react';
+import { Link } from 'react-scroll';
+import { NavLink } from 'react-router-dom';
+
+import Logo from '../img/logo.png';
 
 const Footer = () => (
   <footer className="footer">
@@ -39,8 +41,12 @@ const Footer = () => (
             Contact
           </Link>
         </li>
-        <li className="footer__nav__List__item">Book</li>
-        <li className="footer__nav__List__item">Terms</li>
+        <li className="footer__nav__list__item">
+          <NavLink to="/bookpage" className="footer__nav__list__item">
+            Book
+          </NavLink>
+        </li>
+        <li>Terms</li>
       </ul>
     </nav>
     <img src={Logo} className="footer__logo" alt="logo" />
