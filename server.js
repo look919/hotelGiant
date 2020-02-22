@@ -12,8 +12,6 @@ dotenv.config({ path: './config.env' });
 
 const app = require('./app');
 
-const port = process.env.PORT || 5000;
-
 const DB = process.env.DATABASE.replace(
   '<password>',
   process.env.DATABASE_PASSWORD
@@ -32,9 +30,11 @@ if (process.env.NODE_ENV === 'production') {
   app.use(express.static(path.join(__dirname, 'client', 'build')));
 
   app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+    res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'));
   });
 }
+
+const port = process.env.PORT || 5000;
 const server = app.listen(port || 5000, () => {
   console.log(`App running on port ${port}`);
 });
