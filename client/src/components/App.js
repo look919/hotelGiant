@@ -12,6 +12,7 @@ import LoginPage from './LoginPage';
 import GuestPage from './GuestPage';
 import UpdatePassword from './UpdatePassword';
 import RegisterPage from './RegisterPage';
+require('dotenv').config();
 
 const App = () => {
   if (localStorage.token) {
