@@ -48,7 +48,7 @@ const sendErrorDev = (err, req, res) => {
 };
 
 const sendErrorProd = (err, req, res) => {
-  err.statusCode = err.statusCode || 500;
+  const statusCode = err.statusCode || 500;
   // A) API
   if (req.originalUrl.startsWith('/api')) {
     // A) Operational, trusted error: send message to client
@@ -72,7 +72,7 @@ const sendErrorProd = (err, req, res) => {
   // A) Operational, trusted error: send message to client
   if (err.isOperational) {
     console.log(err);
-    return res.status(err.statusCode).send('error', {
+    return res.status(statusCode).json({
       title: 'Something went wrong!',
       msg: err.message
     });
@@ -81,9 +81,9 @@ const sendErrorProd = (err, req, res) => {
   // 1) Log error
   console.error('ERROR 💥', err);
   // 2) Send generic message
-  return res.status(err.statusCode).send('error', {
+  return res.status(statusCode).json({
     title: 'Something went wrong!',
-    msg: 'Please try again later.'
+    msg: 'Please try again later'
   });
 };
 
