@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
+const path = require('path');
 
 process.on('uncaughtException', err => {
   console.log('UNCAUGHT EXCEPTION - Shutting down...');
@@ -24,6 +25,14 @@ mongoose
     useUnifiedTopology: true
   })
   .then(() => console.log('DB connection successful'));
+
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static('client/build'));
+
+  app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+  });
+}
 
 const port = process.env.PORT || 5000;
 const server = app.listen(port, () => {
