@@ -40,6 +40,10 @@
     font-size: 2.2rem;
     padding: 0.5rem 2rem;
 
+    @media only screen and (max-width: $bp-1300) {
+      font-size: 1.8rem;
+    }
+
     animation: moveInLeft 1.5s ease-in-out 1s both;
   }
   &__purchase {
@@ -77,6 +81,12 @@
       width: 60%;
       justify-self: center;
 
+      @media only screen and (max-width: $bp-1300) {
+        width: 40%;
+        font-size: 1.4rem;
+        padding: 2rem 3rem;
+      }
+
       &:hover {
         background-image: linear-gradient(
           to left bottom,
@@ -105,6 +115,11 @@
       color: $color-white;
       text-align: center;
       padding: 0.5rem 5rem;
+
+      @media only screen and (max-width: $bp-1300) {
+        font-size: 1.2rem;
+        padding: 0.5rem 3rem;
+      }
 
       background-image: linear-gradient(
         to left bottom,

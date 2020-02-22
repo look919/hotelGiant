@@ -74,6 +74,11 @@ body {
 .devinfo {
   color: $color-white;
   font-style: italic;
+  margin-top: 0.5rem;
+
+  @media only screen and (max-width: $bp-1300) {
+    font-size: 1.2rem;
+  }
 }
 ::selection {
   background-color: $color-primary-dark;

@@ -24,6 +24,11 @@
     padding: 1rem 3rem;
     padding-top: 4rem;
 
+    @media only screen and(max-width: $bp-1100) {
+      padding-top: 3rem;
+      font-size: 1.4rem;
+    }
+
     &__list {
       display: flex;
       justify-content: space-evenly;
@@ -47,7 +52,11 @@
   &__credits {
     padding: 1rem 3rem;
     padding-top: 4rem;
-
     border-bottom: 1px solid $color-white;
+
+    @media only screen and(max-width: $bp-1100) {
+      padding-top: 3rem;
+      font-size: 1.4rem;
+    }
   }
 }

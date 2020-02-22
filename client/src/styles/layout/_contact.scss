@@ -2,6 +2,10 @@
   grid-row: contact-start / contact-end;
   grid-column: center-start / center-end;
 
+  @media only screen and(max-width: $bp-1100) {
+    grid-column: full-start / full-end;
+  }
+
   &__content {
     display: flex;
     flex-direction: column;
@@ -15,7 +19,7 @@
         rgba(255, 255, 255, 0.7) 50%,
         transparent 30%
       ),
-      url("../img/form.jpg");
+      url('../img/form.jpg');
     background-size: cover;
     background-position: center;
     border: 1px solid $color-grey-light-2;

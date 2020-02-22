@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavLink, Redirect } from 'react-router-dom';
 import {
   UsersIcon,
@@ -12,18 +12,40 @@ import PropTypes from 'prop-types';
 import Restaurant from './../img/gallery-restaurant.jpg';
 import Gym from './../img/gallery-gym.jpg';
 import GameRoom from './../img/gallery-gameroom.jpg';
-
 import Logo from './../img/logo2.png';
 
 const GuestPage = ({ auth, user, logout }) => {
+  const [purchaseOptions, setPurchaseOptions] = useState({
+    sevice: '',
+    codeInput: false,
+    devInfo: false
+  });
+
   useEffect(() => {
     loadExpenses();
   });
+
+  const handlePurchaseButton = e => {
+    e.preventDefault();
+    if (!purchaseOptions.codeInput) {
+      setPurchaseOptions({
+        ...purchaseOptions,
+        codeInput: true
+      });
+    } else {
+      setPurchaseOptions({
+        ...purchaseOptions,
+        devInfo: true,
+        codeInput: false
+      });
+    }
+  };
 
   const onSubmit = async e => {
     e.preventDefault();
     logout();
   };
+  //TODO
   const loadExpenses = () => {
     const userExpenses = user ? user.expenses : [];
     if (!userExpenses) {
@@ -121,6 +143,35 @@ const GuestPage = ({ auth, user, logout }) => {
             alt="service"
             className="guestPage__services__item__photo"
           />
+          <div className="guestPage__services__item__pseudo guestPage__services__item__pseudo--column">
+            <div>
+              <h3 className="heading-3 guestPage__services__item__header">
+                Breakfast
+              </h3>
+              <p className="devinfo">Cost 5$ | Code 7563</p>
+            </div>
+            <div>
+              <h3 className="heading-3 guestPage__services__item__header">
+                All meals for 1 day only
+              </h3>
+              <p className="devinfo">Cost 9$ Code 7003</p>
+            </div>
+            <div>
+              <h3 className="heading-3 guestPage__services__item__header">
+                All meals for the stay peroid
+              </h3>
+              <p className="devinfo">Cost 15$ Code 7213</p>
+            </div>
+            {purchaseOptions.codeInput && (
+              <input className="guestPage__services__item__input" />
+            )}
+            <button onClick={e => handlePurchaseButton(e)} className="btn">
+              Purchase online
+            </button>
+            {purchaseOptions.devInfo && (
+              <p className="devinfo">This funcionality doesnt work just yet</p>
+            )}
+          </div>
         </div>
         <div className="guestPage__services__item guestPage__services__item--gameroom">
           <img
@@ -128,6 +179,38 @@ const GuestPage = ({ auth, user, logout }) => {
             alt="service"
             className="guestPage__services__item__photo"
           />
+          <div className="guestPage__services__item__pseudo">
+            <div>
+              <h3 className="heading-3 guestPage__services__item__header">
+                2hours ticket
+              </h3>
+              <p className="devinfo">Cost 5$ | Code 4123</p>
+            </div>
+            <div>
+              <h3 className="heading-3 guestPage__services__item__header">
+                1 day ticket
+              </h3>
+              <p className="devinfo">Cost 9$ Code 7003</p>
+            </div>
+            <div>
+              <h3 className="heading-3 guestPage__services__item__header">
+                Ticket for the stay peroid
+              </h3>
+              <p className="devinfo">Cost 15$ Code 7213</p>
+            </div>
+            {purchaseOptions.codeInput && (
+              <input className="guestPage__services__item__input" />
+            )}
+            <button
+              onClick={e => handlePurchaseButton(e)}
+              className="btn guestPage__services__item__btn"
+            >
+              Purchase online
+            </button>
+            {purchaseOptions.devInfo && (
+              <p className="devinfo">This funcionality doesnt work just yet</p>
+            )}
+          </div>
         </div>
         <div className="guestPage__services__item guestPage__services__item--gym">
           <img
@@ -135,9 +218,38 @@ const GuestPage = ({ auth, user, logout }) => {
             alt="service"
             className="guestPage__services__item__photo"
           />
-        </div>
-        <div className="guestPage__services__item guestPage__services__item--gym">
-          <h3 className="heading-3">Extend your room reservation</h3>
+          <div className="guestPage__services__item__pseudo">
+            <div>
+              <h3 className="heading-3 guestPage__services__item__header">
+                2hours ticket
+              </h3>
+              <p className="devinfo">Cost 5$ | Code 4123</p>
+            </div>
+            <div>
+              <h3 className="heading-3 guestPage__services__item__header">
+                1 day ticket
+              </h3>
+              <p className="devinfo">Cost 9$ Code 7003</p>
+            </div>
+            <div>
+              <h3 className="heading-3 guestPage__services__item__header">
+                Ticket for the stay peroid
+              </h3>
+              <p className="devinfo">Cost 15$ Code 7213</p>
+            </div>
+            {purchaseOptions.codeInput && (
+              <input className="guestPage__services__item__input" />
+            )}
+            <button
+              onClick={e => handlePurchaseButton(e)}
+              className="btn guestPage__services__item__btn"
+            >
+              Purchase online
+            </button>
+            {purchaseOptions.devInfo && (
+              <p className="devinfo">This funcionality doesnt work just yet</p>
+            )}
+          </div>
         </div>
       </div>
       {user.role === 'admin' ? admin : guest}

@@ -21,6 +21,11 @@
     grid-column-gap: 1.5rem;
     align-items: center;
     justify-items: center;
+
+    @media only screen and(max-width: $bp-1100) {
+      grid-row-gap: 1rem;
+      grid-column-gap: 0.8rem;
+    }
   }
   &__left {
     clip-path: polygon(0 0, 80% 0%, 100% 100%, 0% 100%);
@@ -69,6 +74,7 @@
     font-size: 1.2rem;
     width: 100%;
     word-wrap: break-word;
+
     &--1 {
       grid-row: 1 / 2;
       grid-column: 2 / 3;

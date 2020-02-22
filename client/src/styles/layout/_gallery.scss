@@ -2,6 +2,10 @@
   grid-row: gallery-start / gallery-end;
   grid-column: center-start / center-end;
 
+  @media only screen and (max-width: $bp-1500) {
+    grid-column: full-start / full-end;
+  }
+
   &__content {
     height: 50rem;
     display: grid;

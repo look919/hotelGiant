@@ -7,5 +7,9 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(45rem, 1fr));
     grid-gap: 8rem;
+
+    @media only screen and (max-width: $bp-1500) {
+      grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+    }
   }
 }

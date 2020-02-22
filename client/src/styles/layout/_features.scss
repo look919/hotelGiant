@@ -29,6 +29,10 @@
     padding: 6rem 3rem;
     border-radius: 2px;
 
+    @media only screen and(max-width: $bp-1100) {
+      grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+    }
+
     &__item {
       display: flex;
       flex-direction: column;

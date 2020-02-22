@@ -34,8 +34,8 @@ export const Locations = () => {
   const [viewport] = useState({
     latitude: 47.2000338,
     longitude: 13.199959,
-    width: '1000px',
-    height: '700px',
+    width: '70vw',
+    height: '70vh',
     zoom: 4
   });
   return (

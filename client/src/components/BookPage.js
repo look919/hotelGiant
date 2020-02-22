@@ -193,7 +193,9 @@ const BookPage = () => {
               onChange={e => onChange(e)}
             ></textarea>
             <button className="btn bookpage__form__button">Submit</button>
-            {formData.devInfo && <p>Didnt create this funcionality just yet</p>}
+            {formData.devInfo && (
+              <p className="devinfo">Didnt create this funcionality just yet</p>
+            )}
           </div>
         </form>
       </div>
