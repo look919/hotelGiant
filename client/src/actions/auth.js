@@ -34,14 +34,14 @@ export const loadUser = () => async dispatch => {
 };
 
 //register User
-export const register = ({
+export const register = (
   login,
   password,
   passwordConfirm,
   hotel,
   room,
   days
-}) => async dispatch => {
+) => async dispatch => {
   const body = JSON.stringify({
     login,
     password,
@@ -56,11 +56,12 @@ export const register = ({
     }
   };
   try {
-    const res = await axios.post('/api/v1/users/register', body, config);
+    const res = await axios.post('/api/v1/users/signup', body, config);
     dispatch({
       type: REGISTER_SUCCESS,
       payload: res.data
     });
+    dispatch(setAlert('User created successfully', 'success'));
   } catch (err) {
     dispatch(setAlert(err.response.data.message, 'danger'));
     dispatch({

@@ -45,8 +45,12 @@ exports.signup = catchAsync(async (req, res, next) => {
     room: req.body.room,
     days: req.body.days
   });
-
-  createSendToken(newUser, 201, res);
+  res.status(201).json({
+    status: 'success',
+    data: {
+      newUser
+    }
+  });
 });
 exports.login = catchAsync(async (req, res, next) => {
   const { login, password } = req.body;
@@ -165,7 +169,14 @@ exports.restrictTo = (...roles) => {
 
 exports.updatePassword = catchAsync(async (req, res, next) => {
   const { currentPassword, password, passwordConfirm } = req.body;
-
+  if (req.user.login === 'admin' || req.user.login === 'user') {
+    return next(
+      new AppError(
+        'This user is destinated for everyone, you cannot change password to him.',
+        401
+      )
+    );
+  }
   // 1) Get user from collection
   const user = await User.findById(req.user.id).select('+password');
 

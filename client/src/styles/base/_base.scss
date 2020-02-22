@@ -71,7 +71,10 @@ body {
     grid-template-columns: 4fr 1fr;
   }
 }
-
+.devinfo {
+  color: $color-white;
+  font-style: italic;
+}
 ::selection {
   background-color: $color-primary-dark;
   color: $color-secondary-dark;

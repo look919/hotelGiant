@@ -27,7 +27,6 @@ const BookPage = () => {
     startDate: moment().add('1', 'day'),
     endDate: moment().add('8', 'days')
   });
-  const { startDate, endDate } = date;
   const [focus, setFocus] = useState(null);
 
   const onChange = e => {
@@ -40,7 +39,6 @@ const BookPage = () => {
   const onDateChange = (startDate, endDate) => {
     setDate(startDate, endDate);
   };
-  console.log(startDate, endDate);
   const onSubmit = async e => {
     e.preventDefault();
     setFormData({
