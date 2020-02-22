@@ -28,17 +28,16 @@ mongoose
   })
   .then(() => console.log('DB connection successful'));
 
-const server = app.listen(port || 5000, () => {
-  console.log(`App running on port ${port}`);
-});
-
 if (process.env.NODE_ENV === 'production') {
-  app.use(express.static('client/build'));
+  app.use(express.static(path.join(__dirname, 'client', 'build')));
 
   app.get('*', (req, res) => {
     res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
   });
 }
+const server = app.listen(port || 5000, () => {
+  console.log(`App running on port ${port}`);
+});
 
 process.on('unhandledRejection', err => {
   console.log('UNHANDLED REJECTION - Shutting down...');
