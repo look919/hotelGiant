@@ -4,11 +4,12 @@
   "description": "application for hotel",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon server.js",
+    "start": "node server",
     "start:prod": "set NODE_ENV=production&& nodemon server.js",
+    "server": "nodemon server",
     "debug": "ndb server.js",
     "client": "npm start --prefix client",
-    "dev": "concurrently \"npm run start\" \"npm run client\"",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
   },
   "author": "Tomasz Wirkus",
