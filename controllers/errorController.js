@@ -31,14 +31,14 @@ const sendErrorDev = (err, req, res) => {
 
   // A) API
   if (req.originalUrl.startsWith('/api')) {
-    return res.status(err.statusCode).json({
+    return res.status(statusCode).json({
       status: err.status,
       error: err,
       message: err.message,
       stack: err.stack
     });
   }
-
+  console.log(statusCode);
   // B) RENDERED WEBSITE
   console.error('ERROR 💥', err);
   return res.status(statusCode).send('error', {
