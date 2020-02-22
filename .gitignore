@@ -2,3 +2,4 @@ node_modules/
 config.env
 client/node_modules/
 client/.env.local
+client/.env.prod
