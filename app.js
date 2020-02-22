@@ -55,10 +55,6 @@ app.use('/api/v1/rooms', roomRouter);
 app.use('/api/v1/users', userRouter);
 app.use('/api/v1/orders', orderRouter);
 
-app.all('*', (req, res, next) => {
-  next(new AppError(`Can't find ${req.originalUrl} on this server!`, 404));
-});
-
 app.use(globalErrorHandler);
 
 module.exports = app;
