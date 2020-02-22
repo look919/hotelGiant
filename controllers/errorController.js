@@ -38,6 +38,13 @@ const sendErrorDev = (err, req, res) => {
       stack: err.stack
     });
   }
+
+  // B) RENDERED WEBSITE
+  console.error('ERROR 💥', err);
+  return res.status(statusCode).json({
+    title: 'Something went wrong!',
+    msg: err.message
+  });
 };
 
 const sendErrorProd = (err, req, res) => {
