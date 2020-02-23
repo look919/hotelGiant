@@ -17,7 +17,9 @@ import Logo from './../img/logo2.png';
 const GuestPage = ({ auth, user, logout }) => {
   const [purchaseOptions, setPurchaseOptions] = useState({
     sevice: '',
-    codeInput: false,
+    codeInputRestaurant: false,
+    codeInputGameRoom: false,
+    codeInputGym: false,
     devInfo: false
   });
 
@@ -25,18 +27,48 @@ const GuestPage = ({ auth, user, logout }) => {
     loadExpenses();
   });
 
-  const handlePurchaseButton = e => {
+  const handleRestaurantButton = e => {
     e.preventDefault();
-    if (!purchaseOptions.codeInput) {
+    if (!purchaseOptions.codeInputRestaurant) {
       setPurchaseOptions({
         ...purchaseOptions,
-        codeInput: true
+        codeInputRestaurant: true
       });
     } else {
       setPurchaseOptions({
         ...purchaseOptions,
         devInfo: true,
-        codeInput: false
+        codeInputRestaurant: false
+      });
+    }
+  };
+  const handleGameRoomButton = e => {
+    e.preventDefault();
+    if (!purchaseOptions.codeInputGameRoom) {
+      setPurchaseOptions({
+        ...purchaseOptions,
+        codeInputGameRoom: true
+      });
+    } else {
+      setPurchaseOptions({
+        ...purchaseOptions,
+        devInfo: true,
+        codeInputGameRoom: false
+      });
+    }
+  };
+  const handleGymButton = e => {
+    e.preventDefault();
+    if (!purchaseOptions.codeInputGym) {
+      setPurchaseOptions({
+        ...purchaseOptions,
+        codeInputGym: true
+      });
+    } else {
+      setPurchaseOptions({
+        ...purchaseOptions,
+        devInfo: true,
+        codeInputGym: false
       });
     }
   };
@@ -104,7 +136,7 @@ const GuestPage = ({ auth, user, logout }) => {
           Estimated duration of stay: {user.days} days
         </ul>
       </li>
-      <div className="guestPage__info__list">
+      <div className="guestPage__info__list guestPage__info__list--expenses">
         <h3 className="heading-4 guestPage__info__heading">Your Expenses</h3>
         <li className="guestPage__info__list">
           <ul className="guestPage__info__list__item">
@@ -162,10 +194,14 @@ const GuestPage = ({ auth, user, logout }) => {
               </h3>
               <p className="devinfo">Cost 15$ Code 7213</p>
             </div>
-            {purchaseOptions.codeInput && (
-              <input className="guestPage__services__item__input" />
+            {purchaseOptions.codeInputRestaurant && (
+              <input
+                className="guestPage__services__item__input"
+                placeholder="code of the service"
+                maxLength={4}
+              />
             )}
-            <button onClick={e => handlePurchaseButton(e)} className="btn">
+            <button onClick={e => handleRestaurantButton(e)} className="btn">
               Purchase online
             </button>
             {purchaseOptions.devInfo && (
@@ -198,17 +234,23 @@ const GuestPage = ({ auth, user, logout }) => {
               </h3>
               <p className="devinfo">Cost 15$ Code 7213</p>
             </div>
-            {purchaseOptions.codeInput && (
-              <input className="guestPage__services__item__input" />
+            {purchaseOptions.codeInputGameRoom && (
+              <input
+                className="guestPage__services__item__input"
+                placeholder="code of the service"
+                maxLength={4}
+              />
             )}
             <button
-              onClick={e => handlePurchaseButton(e)}
+              onClick={e => handleGameRoomButton(e)}
               className="btn guestPage__services__item__btn"
             >
               Purchase online
             </button>
             {purchaseOptions.devInfo && (
-              <p className="devinfo">This funcionality doesnt work just yet</p>
+              <p className="devinfo guestPage__services__item__p">
+                This funcionality doesnt work just yet
+              </p>
             )}
           </div>
         </div>
@@ -237,17 +279,23 @@ const GuestPage = ({ auth, user, logout }) => {
               </h3>
               <p className="devinfo">Cost 15$ Code 7213</p>
             </div>
-            {purchaseOptions.codeInput && (
-              <input className="guestPage__services__item__input" />
+            {purchaseOptions.codeInputGym && (
+              <input
+                className="guestPage__services__item__input"
+                placeholder="code of the service"
+                maxLength={4}
+              />
             )}
             <button
-              onClick={e => handlePurchaseButton(e)}
+              onClick={e => handleGymButton(e)}
               className="btn guestPage__services__item__btn"
             >
               Purchase online
             </button>
             {purchaseOptions.devInfo && (
-              <p className="devinfo">This funcionality doesnt work just yet</p>
+              <p className="devinfo guestPage__services__item__p">
+                This funcionality doesnt work just yet
+              </p>
             )}
           </div>
         </div>

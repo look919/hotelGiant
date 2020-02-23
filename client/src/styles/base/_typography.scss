@@ -47,6 +47,13 @@ body {
 
   @media only screen and (max-width: $bp-1300) {
     font-size: 3.2rem;
+    margin-bottom: 5rem;
+  }
+
+  @media only screen and (max-width: $bp-1100) {
+    font-size: 3rem;
+    margin-bottom: 2.5rem;
+    margin-top: 1rem;
   }
 
   background-image: linear-gradient(

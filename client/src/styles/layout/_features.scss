@@ -32,6 +32,9 @@
     @media only screen and(max-width: $bp-1100) {
       grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
     }
+    @media only screen and (max-width: $bp-900) {
+      grid-template-columns: repeat(auto-fit, minmax(22.5rem, 1fr));
+    }
 
     &__item {
       display: flex;

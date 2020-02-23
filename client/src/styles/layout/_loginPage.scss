@@ -13,11 +13,11 @@
 
   &__input {
     width: 30%;
-    margin-left: 1rem;
     color: $color-black;
     font-family: $font-primary;
     font-size: 1.6rem;
     margin-bottom: 1rem;
+    margin-left: 1rem;
 
     background-image: linear-gradient(
       to right bottom,
@@ -36,6 +36,13 @@
       transform: translateX(1rem);
       border: 3px solid $color-primary-dark;
     }
+  }
+  &__select {
+    background-color: $color-primary;
+    width: 30%;
+    padding: 1.2rem 2rem;
+    margin-bottom: 1rem;
+    margin-left: 1rem;
   }
   &__btn {
     width: 30%;

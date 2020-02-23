@@ -35,7 +35,7 @@ export const Locations = () => {
     latitude: 47.2000338,
     longitude: 13.199959,
     width: '70vw',
-    height: '70vh',
+    height: '75vh',
     zoom: 4
   });
   return (

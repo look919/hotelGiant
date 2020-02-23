@@ -8,6 +8,10 @@
 
 html {
   font-size: 62.5%;
+
+  @media only screen and (max-width: $bp-900) {
+    font-size: 50%;
+  }
 }
 
 body {
@@ -27,10 +31,18 @@ body {
     14rem [center-end] 8rem [full-end nav-start] 8rem [nav-end];
   grid-row-gap: 8rem;
 
+  @media only screen and (max-width: $bp-900) {
+    grid-row-gap: 5rem;
+  }
+
   &--bookPage {
     display: grid;
     grid-template-rows: 7rem min-content 100vh;
     grid-template-columns: [full-start] 1fr [full-end]; //functionality for rooms
+
+    @media only screen and (max-width: $bp-900) {
+      grid-template-rows: 7rem min-content 100vh;
+    }
 
     background-image: linear-gradient(
       to right bottom,
@@ -69,15 +81,25 @@ body {
 
     display: grid;
     grid-template-columns: 4fr 1fr;
+
+    @media only screen and (max-width: $bp-900) {
+      grid-template-rows: min-content, 1fr;
+      grid-template-columns: 1fr;
+      height: 100%;
+    }
   }
 }
 .devinfo {
   color: $color-white;
   font-style: italic;
   margin-top: 0.5rem;
+  text-align: center;
 
   @media only screen and (max-width: $bp-1300) {
     font-size: 1.2rem;
+  }
+  @media only screen and (max-width: $bp-1100) {
+    font-size: 1rem;
   }
 }
 ::selection {

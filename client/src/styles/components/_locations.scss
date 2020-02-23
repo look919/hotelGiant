@@ -1,16 +1,25 @@
 .locations {
-  grid-column: center-start / center-end;
+  grid-column: full-start / full-end;
   align-self: center;
   justify-self: center;
+  width: 100%;
 
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  align-items: center;
   text-align: center;
 
   &__map {
     padding: 1rem;
     outline: 1rem dashed $color-primary;
+    align-self: center;
+
+    @media only screen and (max-width: $bp-900) {
+      width: 100% !important;
+      height: 450px !important;
+      zoom: 0 !important;
+    }
   }
 
   &__heading {

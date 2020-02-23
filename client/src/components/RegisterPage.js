@@ -25,6 +25,15 @@ const RegisterPage = ({ register, auth, user }) => {
     e.preventDefault();
 
     register(login, password, passwordConfirm, hotel, room, days);
+
+    setFormData({
+      login: '',
+      password: '',
+      passwordConfirm: '',
+      hotel: 'Warsaw - Zwyciestwa 32',
+      room: '',
+      days: ''
+    });
   };
 
   if (!auth || user.role !== 'admin') {
@@ -82,14 +91,51 @@ const RegisterPage = ({ register, auth, user }) => {
           onChange={e => onChange(e)}
           required
         />
-        <input
-          className="loginpage__input"
-          placeholder="room"
-          name="room"
-          value={formData.room}
+
+        <select
           onChange={e => onChange(e)}
+          className="bookpage__form__select loginpage__select"
+          name="room"
           required
-        />
+          value={formData.room}
+        >
+          <option
+            className="bookpage__form__select__item"
+            value="5e3abeb9b5628623182741be"
+          >
+            Room nr 1
+          </option>
+          <option
+            className="bookpage__form__select__item"
+            value="5e3ac1d484bcca1888311b42"
+          >
+            Room nr 2
+          </option>
+          <option
+            className="bookpage__form__select__item"
+            value="5e3ac1ed84bcca1888311b43"
+          >
+            Room nr 3
+          </option>
+          <option
+            className="bookpage__form__select__item"
+            value="5e3ac21984bcca1888311b44"
+          >
+            Double bed room
+          </option>
+          <option
+            className="bookpage__form__select__item"
+            value="5e3ac22d84bcca1888311b45"
+          >
+            Family room (max 4 people)
+          </option>
+          <option
+            className="bookpage__form__select__item"
+            value="5e3ac24184bcca1888311b46"
+          >
+            Apartament
+          </option>
+        </select>
         <input
           className="loginpage__input"
           placeholder="days"
