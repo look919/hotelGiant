@@ -61,9 +61,13 @@ const LoginPage = ({ login, auth }) => {
           />
         </div>
         <input type="submit" className="btn loginpage__btn" value="Login" />
-        <p className="devinfo">Test users for everyone</p>
-        <p className="devinfo">As guest: login: user, password: test1234</p>
-        <p className="devinfo">As admin: login: admin, password: test1234</p>
+        <p className="devinfo devinfo--left">Test users for everyone</p>
+        <p className="devinfo devinfo--left">
+          As guest: login: user, password: test1234
+        </p>
+        <p className="devinfo devinfo--left">
+          As admin: login: admin, password: test1234
+        </p>
       </form>
     </section>
   );
