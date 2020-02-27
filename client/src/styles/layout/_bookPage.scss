@@ -1,4 +1,5 @@
 .bookpage {
+  position: relative;
   grid-row: 3 / 4;
   grid-column: 1 / -1;
 
@@ -136,6 +137,7 @@
           rgba($color-secondary-dark, 0.9)
         );
         background-color: none;
+        color: $color-grey-light-2;
       }
       background-color: $color-primary-dark;
       background-image: none;

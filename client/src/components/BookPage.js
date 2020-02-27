@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import moment from 'moment';
+import { connect } from 'react-redux';
+import { createOrder } from './../actions/orders';
+import PropTypes from 'prop-types';
 
 import { DateRangePicker } from 'react-dates';
 import 'react-dates/initialize';
@@ -10,7 +13,9 @@ import Rooms from './Rooms';
 import Logo from '../img/logo2.png';
 import { UsersIcon, ArrowLeft } from '../img/Icons';
 
-const BookPage = () => {
+const BookPage = ({ createOrder }) => {
+  const hash = window.location.hash.substr(1) || 'Room nr 1';
+
   const [formData, setFormData] = useState({
     fname: '',
     lname: '',
@@ -20,9 +25,12 @@ const BookPage = () => {
     town: '',
     zip: '',
     adress: '',
+    hotel: 'Warsaw',
+    room: hash,
     info: '',
-    devInfo: false
+    orderDone: false
   });
+
   const [date, setDate] = useState({
     startDate: moment().add('1', 'day'),
     endDate: moment().add('8', 'days')
@@ -35,18 +43,30 @@ const BookPage = () => {
       [e.target.name]: e.target.value
     });
   };
-
   const onDateChange = (startDate, endDate) => {
     setDate(startDate, endDate);
   };
   const onSubmit = async e => {
     e.preventDefault();
-    setFormData({
+
+    await createOrder(formData, date);
+
+    await setFormData({
       ...formData,
-      devInfo: true
+      phone: '',
+      email: '',
+      country: '',
+      town: '',
+      zip: '',
+      adress: '',
+      hotel: 'Warsaw',
+      room: hash,
+      info: '',
+      fname: '',
+      lname: '',
+      orderDone: true
     });
   };
-  const hash = window.location.hash.substr(1);
 
   return (
     <div className="container--bookPage">
@@ -77,16 +97,18 @@ const BookPage = () => {
               className="bookpage__form__input bookpage__form__input--name"
               placeholder="Name"
               name="fname"
-              value={formData.name}
+              value={formData.fname}
               onChange={e => onChange(e)}
+              required
             />
             <input
               type="text"
               className="bookpage__form__input bookpage__form__input--vorname"
               placeholder="Vorname"
               name="lname"
-              value={formData.vorname}
+              value={formData.lname}
               onChange={e => onChange(e)}
+              required
             />
             <input
               type="tel"
@@ -95,6 +117,7 @@ const BookPage = () => {
               name="phone"
               value={formData.phone}
               onChange={e => onChange(e)}
+              required
             />
             <input
               type="email"
@@ -103,6 +126,7 @@ const BookPage = () => {
               name="email"
               value={formData.email}
               onChange={e => onChange(e)}
+              required
             />
             <input
               type="text"
@@ -111,6 +135,7 @@ const BookPage = () => {
               name="country"
               value={formData.country}
               onChange={e => onChange(e)}
+              required
             />
             <input
               type="text"
@@ -119,6 +144,7 @@ const BookPage = () => {
               onChange={e => onChange(e)}
               name="town"
               value={formData.town}
+              required
             />
             <input
               type="text"
@@ -127,6 +153,7 @@ const BookPage = () => {
               onChange={e => onChange(e)}
               name="zip"
               value={formData.zip}
+              required
             />
             <input
               type="text"
@@ -135,10 +162,40 @@ const BookPage = () => {
               onChange={e => onChange(e)}
               name="adress"
               value={formData.adress}
+              required
             />
           </div>
           <div className="bookpage__form__right">
-            <select className="bookpage__form__select" defaultValue={hash}>
+            <select
+              className="bookpage__form__select"
+              name="hotel"
+              value={formData.hotel}
+              onChange={e => onChange(e)}
+              required
+            >
+              <option className="bookpage__form__select__item" value="Warsaw">
+                Warsaw - Zwyciestwa 32
+              </option>
+              <option className="bookpage__form__select__item" value="Bilbao">
+                Bilbao - Barrencalle 23
+              </option>
+              <option className="bookpage__form__select__item" value="Naples">
+                Naples - Spaccanapoli 8
+              </option>
+              <option className="bookpage__form__select__item" value="Brussels">
+                Brussels - Bonheur 11
+              </option>
+              <option className="bookpage__form__select__item" value="Prague">
+                Prague - Pařížská Street 3
+              </option>
+            </select>
+            <select
+              className="bookpage__form__select"
+              name="room"
+              value={formData.room}
+              onChange={e => onChange(e)}
+              required
+            >
               <option className="bookpage__form__select__item" value="Roomnr1">
                 Room nr 1
               </option>
@@ -150,7 +207,7 @@ const BookPage = () => {
               </option>
               <option
                 className="bookpage__form__select__item"
-                value="Doublebedroom"
+                value="Double bed room"
               >
                 Double bed room
               </option>
@@ -192,10 +249,15 @@ const BookPage = () => {
               value={formData.info}
               onChange={e => onChange(e)}
             ></textarea>
-            <button className="btn bookpage__form__button">Submit</button>
-            {formData.devInfo && (
-              <p className="devinfo">Didnt create this funcionality just yet</p>
+            {formData.orderDone === true ? (
+              <button disabled className="btn bookpage__form__button">
+                Thank you! Your order has been successfully send!
+              </button>
+            ) : (
+              <button className="btn bookpage__form__button">Submit</button>
             )}
+
+            {}
           </div>
         </form>
       </div>
@@ -203,5 +265,8 @@ const BookPage = () => {
   );
 };
 
-export default BookPage;
-// !isInclusivelyAfterDay(day, moment().add('1', 'day'))
+BookPage.propTypes = {
+  createOrder: PropTypes.func.isRequired
+};
+
+export default connect(null, { createOrder })(BookPage);

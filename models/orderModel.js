@@ -9,6 +9,10 @@ const orderSchema = new mongoose.Schema({
     type: String,
     required: [true, 'An order must have an owner vorname']
   },
+  hotel: {
+    type: String,
+    required: [true, 'An order must have a choosen room']
+  },
   choosenRoom: {
     type: String,
     required: [true, 'An order must have a choosen room']

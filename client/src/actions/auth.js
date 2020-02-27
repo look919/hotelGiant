@@ -64,6 +64,7 @@ export const register = (
     dispatch(setAlert('User created successfully', 'success'));
   } catch (err) {
     dispatch(setAlert(err.response.data.message, 'danger'));
+    console.log(err.response);
     dispatch({
       type: REGISTER_FAIL,
       payload: err.message

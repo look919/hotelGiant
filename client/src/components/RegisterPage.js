@@ -13,7 +13,7 @@ const RegisterPage = ({ register, auth, user }) => {
     password: '',
     passwordConfirm: '',
     hotel: 'Warsaw - Zwyciestwa 32',
-    room: '',
+    room: '5e3abeb9b5628623182741be',
     days: ''
   });
   const { login, password, passwordConfirm, hotel, room, days } = formData;
@@ -93,11 +93,11 @@ const RegisterPage = ({ register, auth, user }) => {
         />
 
         <select
-          onChange={e => onChange(e)}
           className="bookpage__form__select loginpage__select"
           name="room"
-          required
+          onChange={e => onChange(e)}
           value={formData.room}
+          required
         >
           <option
             className="bookpage__form__select__item"
