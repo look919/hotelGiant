@@ -9,7 +9,7 @@ import Alert from './Alert';
 import DashboardPage from './DashboardPage';
 import BookPage from './BookPage';
 import LoginPage from './LoginPage';
-import GuestPage from './GuestPage';
+import GuestPage from './guestPage/GuestPage';
 import UpdatePassword from './UpdatePassword';
 import RegisterPage from './RegisterPage';
 require('dotenv').config();
