@@ -49,6 +49,10 @@ const orderSchema = new mongoose.Schema({
   endDate: {
     type: Date,
     required: [true, 'An order must have an end date']
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now()
   }
 });
 

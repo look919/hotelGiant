@@ -53,10 +53,10 @@ export const createOrder = (
   }
 };
 
-export const getAllOrders = () => async dispatch => {
+export const getAllOrders = ({ hotel, sort }) => async dispatch => {
   try {
     const res = await axios.get(
-      '/api/v1/rooms?fields=_id&hotel=Warsaw&limit=5'
+      `/api/v1/orders?fields=_id&hotel=${hotel}&limit=5&sort=${sort}`
     );
 
     dispatch({
@@ -66,6 +66,26 @@ export const getAllOrders = () => async dispatch => {
   } catch (err) {
     dispatch({
       type: GET_ALL_ORDERS_FAIL,
+      payload: { msg: 'error', status: 'not found' }
+    });
+  }
+};
+
+export const getOrder = id => async dispatch => {
+  try {
+    const res = await axios.get(`/api/v1/orders/${id}`);
+
+    dispatch({
+      type: GET_ORDER_SUCCESS,
+      payload: res.data
+    });
+  } catch (err) {
+    console.log(err);
+
+    dispatch(setAlert(err.response.data.message, 'danger'));
+
+    dispatch({
+      type: GET_ORDER_FAIL,
       payload: { msg: 'error', status: 'not found' }
     });
   }

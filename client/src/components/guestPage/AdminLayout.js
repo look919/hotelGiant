@@ -3,7 +3,8 @@ import PropTypes from 'prop-types';
 import { NavLink, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { logout } from '../../actions/auth';
-import { getAllOrders } from '../../actions/orders';
+import { getAllOrders, getOrder } from '../../actions/orders';
+import moment from 'moment';
 
 import Logo from '../../img/logo2.png';
 import {
@@ -13,15 +14,44 @@ import {
   NewAccountIcon
 } from '../../img/Icons';
 
-const AdminLayout = ({ user, auth, logout, getAllOrders }) => {
-  useEffect(() => {
-    getAllOrders();
-  }, [getAllOrders]);
+const AdminLayout = ({
+  user,
+  auth,
+  logout,
+  getAllOrders,
+  getOrder,
+  orders
+}) => {
+  const [formData, setFormData] = useState({
+    hotel: 'Warsaw',
+    sort: '-createdAt',
+    id: ''
+  });
 
   const onSubmit = async e => {
     e.preventDefault();
     logout();
   };
+
+  const onChange = e => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  };
+  const handleGetOrder = async e => {
+    e.preventDefault();
+    getOrder(e.target.value);
+
+    setFormData({
+      ...formData,
+      id: ''
+    });
+  };
+
+  useEffect(() => {
+    getAllOrders(formData);
+  }, [formData]);
 
   if (!auth) {
     return <Redirect to={'/'} />;
@@ -29,7 +59,94 @@ const AdminLayout = ({ user, auth, logout, getAllOrders }) => {
 
   return (
     <section className="container--guestPage">
-      <div className="guestPage__services">Tomato</div>
+      <div className="guestPage__services">
+        <h3 className="heading-3">Bookings:</h3>
+
+        <div className="guestPage__services__bookings">
+          <select
+            className="bookpage__form__select"
+            name="hotel"
+            value={formData.hotel}
+            onChange={e => onChange(e)}
+            required
+          >
+            <option className="bookpage__form__select__item" value="Warsaw">
+              Warsaw - Zwyciestwa 32
+            </option>
+            <option className="bookpage__form__select__item" value="Bilbao">
+              Bilbao - Barrencalle 23
+            </option>
+            <option className="bookpage__form__select__item" value="Naples">
+              Naples - Spaccanapoli 8
+            </option>
+            <option className="bookpage__form__select__item" value="Brussels">
+              Brussels - Bonheur 11
+            </option>
+            <option className="bookpage__form__select__item" value="Prague">
+              Prague - Pařížská Street 3
+            </option>
+          </select>
+          <select
+            className="bookpage__form__select"
+            name="sort"
+            value={formData.sort}
+            onChange={e => onChange(e)}
+            required
+          >
+            <option className="bookpage__form__select__item" value="-createdAt">
+              Recent created
+            </option>
+            <option className="bookpage__form__select__item" value="createdAt">
+              First created
+            </option>
+            <option className="bookpage__form__select__item" value="startDate">
+              Start Date
+            </option>
+          </select>
+          <h4 className="heading-4 guestPage__services__bookings__header">
+            Found {orders.results || 0} (maximum 5 shows) bookings in that hotel
+          </h4>
+          {orders.results &&
+            orders.data.data.map(order => (
+              <button
+                key={order._id}
+                value={order._id}
+                className="guestPage__services__bookings__btn"
+                onClick={e => handleGetOrder(e)}
+              >
+                {order._id}
+              </button>
+            ))}
+        </div>
+        <div className="guestPage__services__booking">
+          <h4 className="heading-4 guestPage__services__booking__header">
+            Order informations
+          </h4>
+
+          {orders.order && (
+            <div className="guestPage__services__booking__data">
+              <p>Name: {orders.order.data.data.name}</p>
+              <p>Vorname: {orders.order.data.data.vorname}</p>
+              <p>Phone: {orders.order.data.data.phone}</p>
+              <p>Email: {orders.order.data.data.email}</p>
+              <p>Country: {orders.order.data.data.country}</p>
+              <p>Town: {orders.order.data.data.town}</p>
+              <p>Zip: {orders.order.data.data.zip}</p>
+              <p>Adress: {orders.order.data.data.adress}</p>
+              <p>Room: {orders.order.data.data.choosenRoom}</p>
+              <p>Info: {orders.order.data.data.info}</p>
+              <p>
+                Start date:{' '}
+                {moment(orders.order.data.data.startDate).format('DD-MM-YY')}
+              </p>
+              <p>
+                End date:{' '}
+                {moment(orders.order.data.data.endDate).format('DD-MM-YY')}
+              </p>
+            </div>
+          )}
+        </div>
+      </div>
       <div className="guestPage__info">
         <img src={Logo} alt="logo" className="guestPage__info__logo" />
         <li className="guestPage__info__list">
@@ -67,12 +184,16 @@ const AdminLayout = ({ user, auth, logout, getAllOrders }) => {
 AdminLayout.propTypes = {
   user: PropTypes.object.isRequired,
   logout: PropTypes.func.isRequired,
-  getAllOrders: PropTypes.func.isRequired
+  getAllOrders: PropTypes.func.isRequired,
+  getOrder: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
   auth: state.auth.isAuthenticated,
-  user: state.auth.user
+  user: state.auth.user,
+  orders: state.orders
 });
 
-export default connect(mapStateToProps, { logout, getAllOrders })(AdminLayout);
+export default connect(mapStateToProps, { logout, getAllOrders, getOrder })(
+  AdminLayout
+);
