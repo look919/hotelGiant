@@ -80,8 +80,6 @@ export const getOrder = id => async dispatch => {
       payload: res.data
     });
   } catch (err) {
-    console.log(err);
-
     dispatch(setAlert(err.response.data.message, 'danger'));
 
     dispatch({

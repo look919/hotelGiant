@@ -46,7 +46,6 @@ export default function(state = initialState, action) {
     case UPDATE_PASSWORD_FAIL:
     case REGISTER_SUCCESS:
     case REGISTER_FAIL:
-      return state;
     default:
       return state;
   }

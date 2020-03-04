@@ -223,7 +223,9 @@
     //from now on there is content for admin
 
     &__bookings,
-    &__booking {
+    &__booking,
+    &__guests,
+    &__guest {
       grid-row: 2 / 3;
       grid-column: 1 / 2;
 
@@ -239,7 +241,7 @@
       &__header {
         color: $color-grey-light-2;
         font-size: 1.4rem;
-        margin-top: 1.5rem;
+        margin: 1.5rem 0;
       }
 
       &__btn {
@@ -261,7 +263,8 @@
         }
       }
     }
-    &__booking {
+    &__booking,
+    &__guest {
       grid-row: 3 / 4;
       grid-column: 1 / 2;
       justify-content: flex-start;
@@ -270,12 +273,27 @@
         margin-bottom: 2rem;
       }
       &__data {
-        width: 100%;
+        width: 80%;
 
         display: grid;
         grid-template-rows: repeat(6, 1fr);
         grid-template-columns: repeat(2, 1fr);
         justify-items: center;
+      }
+    }
+
+    //guests
+
+    &__guests {
+      grid-row: 2 / 3;
+      grid-column: 2 / 3;
+    }
+    &__guest {
+      grid-row: 3 / 4;
+      grid-column: 2 / 3;
+
+      &__data {
+        grid-template-columns: 1fr;
       }
     }
   }
