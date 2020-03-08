@@ -25,12 +25,12 @@ html {
 
 body {
   box-sizing: border-box;
-  width: 100vw;
 }
 
 .container {
   display: grid;
   position: relative;
+
   grid-template-rows:
     [header-start nav-start] 100vh [header-end nav-end description-start] min-content
     [description-end locations-start] min-content [locations-end features-start] min-content[features-end rooms-start]
@@ -54,8 +54,8 @@ body {
       min-content [rooms-end reviews-start] min-content [reviews-end contact-start] min-content [contact-end gallery-start]
       max-content [gallery-end footer-start] 12rem [footer-end];
     grid-template-columns:
-      [full-start] 8rem [center-start] 14rem repeat(5, 1fr)
-      14rem [center-end] 8rem [full-end];
+      [full-start nav-start] 8rem [center-start] 14rem repeat(5, 1fr)
+      14rem [center-end] 8rem [full-end nav-end];
   }
 
   &--bookPage {
