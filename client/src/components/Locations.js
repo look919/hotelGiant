@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
 import LocationItem from './LocationItem';
 import ReactMapGL, { Marker } from 'react-map-gl';
+import { useMediaQuery } from 'react-responsive';
 
 export const Locations = () => {
+  const is900px = useMediaQuery({ query: '(max-width: 900px)' });
+
   const hotels = [
     {
       name: 'Warsaw Zwyciestwa 32',
@@ -34,10 +37,11 @@ export const Locations = () => {
   const [viewport] = useState({
     latitude: 47.2000338,
     longitude: 13.199959,
-    width: '70vw',
-    height: '75vh',
-    zoom: 4
+    width: is900px ? '550px' : '70vw',
+    height: is900px ? '450px' : '75vh',
+    zoom: is900px ? 3 : 4
   });
+  console.log(viewport);
   return (
     <section className="locations">
       <h2 className="heading-2">You can find us all over the Europe</h2>

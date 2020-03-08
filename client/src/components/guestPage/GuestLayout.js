@@ -15,6 +15,7 @@ const GuestLayout = ({ user, auth, logout, updateUserExpenses }) => {
   if (!auth) {
     return <Redirect to={'/'} />;
   }
+  let totalExpenses = 0;
 
   useEffect(() => {
     const checkIfUserHasExpenses = async () => {
@@ -22,7 +23,8 @@ const GuestLayout = ({ user, auth, logout, updateUserExpenses }) => {
         const roomFee = [
           { expense: 'Hotel room fee', cost: user.room.price * user.days }
         ];
-        await updateUserExpenses(user._id, roomFee);
+        totalExpenses = user.room.price * user.days;
+        await updateUserExpenses(user._id, roomFee, totalExpenses);
       }
     };
     checkIfUserHasExpenses();
@@ -46,20 +48,24 @@ const GuestLayout = ({ user, auth, logout, updateUserExpenses }) => {
   ) => {
     const newUserExpenses = user.expenses;
     let bought = false;
+    let totalExpenses = user.totalExpenses;
     switch (purchaseOptions.service) {
       case code1:
         newUserExpenses.push(object1);
-        updateUserExpenses(user._id, newUserExpenses);
+        totalExpenses += object1.cost;
+        updateUserExpenses(user._id, newUserExpenses, totalExpenses);
         bought = true;
         break;
       case code2:
         newUserExpenses.push(object2);
-        updateUserExpenses(user._id, newUserExpenses);
+        totalExpenses += object2.cost;
+        updateUserExpenses(user._id, newUserExpenses, totalExpenses);
         bought = true;
         break;
       case code3:
         newUserExpenses.push(object3);
-        updateUserExpenses(user._id, newUserExpenses);
+        totalExpenses += object3.cost;
+        updateUserExpenses(user._id, newUserExpenses, totalExpenses);
         bought = true;
         break;
       default:
@@ -151,7 +157,6 @@ const GuestLayout = ({ user, auth, logout, updateUserExpenses }) => {
       [e.target.name]: e.target.value
     });
   };
-
   const onSubmit = async e => {
     e.preventDefault();
     logout();
@@ -168,23 +173,25 @@ const GuestLayout = ({ user, auth, logout, updateUserExpenses }) => {
             className="guestPage__services__item__photo"
           />
           <div className="guestPage__services__item__pseudo guestPage__services__item__pseudo--column">
-            <div>
+            <div className="guestPage__services__item__container--restaurant">
               <h3 className="heading-3 guestPage__services__item__header">
                 Breakfast
               </h3>
-              <p className="devinfo">Cost 5$ | Code 2555</p>
+              <p className="guestPage__services__item__p">
+                Cost 5$ | Code 2555
+              </p>
             </div>
-            <div>
+            <div className="guestPage__services__item__container--restaurant">
               <h3 className="heading-3 guestPage__services__item__header">
                 All meals for 1 day only
               </h3>
-              <p className="devinfo">Cost 9$ Code 4612</p>
+              <p className="guestPage__services__item__p">Cost 9$ Code 4612</p>
             </div>
-            <div>
+            <div className="guestPage__services__item__container--restaurant">
               <h3 className="heading-3 guestPage__services__item__header">
                 All meals for the stay peroid
               </h3>
-              <p className="devinfo">Cost 15$ Code 7433</p>
+              <p className="guestPage__services__item__p">Cost 15$ Code 7433</p>
             </div>
             {purchaseOptions.codeInputRestaurant && (
               <input
@@ -196,7 +203,10 @@ const GuestLayout = ({ user, auth, logout, updateUserExpenses }) => {
                 onChange={e => onInputChange(e)}
               />
             )}
-            <button onClick={e => handleRestaurantButton(e)} className="btn">
+            <button
+              onClick={e => handleRestaurantButton(e)}
+              className="btn guestPage__services__item__btn"
+            >
               Purchase online
             </button>
             {purchaseOptions.devInfo && (
@@ -211,23 +221,25 @@ const GuestLayout = ({ user, auth, logout, updateUserExpenses }) => {
             className="guestPage__services__item__photo"
           />
           <div className="guestPage__services__item__pseudo">
-            <div>
+            <div className="guestPage__services__item__container">
               <h3 className="heading-3 guestPage__services__item__header">
                 2hours ticket
               </h3>
-              <p className="devinfo">Cost 5$ | Code 2123</p>
+              <p className="guestPage__services__item__p">
+                Cost 5$ | Code 2123
+              </p>
             </div>
-            <div>
+            <div className="guestPage__services__item__container">
               <h3 className="heading-3 guestPage__services__item__header">
                 1 day ticket
               </h3>
-              <p className="devinfo">Cost 9$ Code 4003</p>
+              <p className="guestPage__services__item__p">Cost 9$ Code 4003</p>
             </div>
-            <div>
+            <div className="guestPage__services__item__container">
               <h3 className="heading-3 guestPage__services__item__header">
                 Ticket for the stay peroid
               </h3>
-              <p className="devinfo">Cost 15$ Code 7213</p>
+              <p className="guestPage__services__item__p">Cost 15$ Code 7213</p>
             </div>
             {purchaseOptions.codeInputGameRoom && (
               <input
@@ -247,9 +259,7 @@ const GuestLayout = ({ user, auth, logout, updateUserExpenses }) => {
               Purchase online
             </button>
             {purchaseOptions.devInfo && (
-              <p className="devinfo guestPage__services__item__p">
-                Make sure your code is correct!
-              </p>
+              <p className="devinfo">Make sure your code is correct!</p>
             )}
           </div>
         </div>
@@ -260,23 +270,25 @@ const GuestLayout = ({ user, auth, logout, updateUserExpenses }) => {
             className="guestPage__services__item__photo"
           />
           <div className="guestPage__services__item__pseudo">
-            <div>
+            <div className="guestPage__services__item__container">
               <h3 className="heading-3 guestPage__services__item__header">
                 2hours ticket
               </h3>
-              <p className="devinfo">Cost 5$ | Code 2443</p>
+              <p className="guestPage__services__item__p">
+                Cost 5$ | Code 2443
+              </p>
             </div>
-            <div>
+            <div className="guestPage__services__item__container">
               <h3 className="heading-3 guestPage__services__item__header">
                 1 day ticket
               </h3>
-              <p className="devinfo">Cost 9$ Code 4032</p>
+              <p className="guestPage__services__item__p">Cost 9$ Code 4032</p>
             </div>
-            <div>
+            <div className="guestPage__services__item__container">
               <h3 className="heading-3 guestPage__services__item__header">
                 Ticket for the stay peroid
               </h3>
-              <p className="devinfo">Cost 15$ Code 7993</p>
+              <p className="guestPage__services__item__p">Cost 15$ Code 7993</p>
             </div>
             {purchaseOptions.codeInputGym && (
               <input
@@ -319,11 +331,18 @@ const GuestLayout = ({ user, auth, logout, updateUserExpenses }) => {
           <h3 className="heading-4 guestPage__info__heading">Your Expenses</h3>
           <li className="guestPage__info__list">
             {user.expenses.length > 0 &&
-              user.expenses.map(exp => (
-                <ul key={exp.expense} className="guestPage__info__list__item">
-                  {exp.expense}: {exp.cost}$
-                </ul>
-              ))}
+              user.expenses.map(exp => {
+                return (
+                  <ul key={exp.expense} className="guestPage__info__list__item">
+                    {exp.expense}: {exp.cost}$
+                  </ul>
+                );
+              })}
+            {
+              <p className="guestPage__info__list__item--bold">
+                Total expenses: {user.totalExpenses}$
+              </p>
+            }
           </li>
         </div>
         <nav className="guestPage__info__nav">

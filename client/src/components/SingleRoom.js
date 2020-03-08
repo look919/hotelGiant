@@ -51,20 +51,20 @@ const SingleRoom = props => {
       <div className="single-room__features">
         <div className="single-room__feature">
           <BedIcon />
-          Bedroom
+          <p className="single-room__info__p">Bedroom</p>
         </div>
         <div className="single-room__feature">
           <BathIcon />
-          Bathroom
+          <p className="single-room__info__p">Bathroom</p>
         </div>
         <div className="single-room__feature">
           <WifiIcon />
-          Free Wifi
+          <p className="single-room__info__p">Free Wifi</p>
         </div>
         {breakfast ? (
           <div className="single-room__feature">
             <FoodIcon2 />
-            {breakfast}
+            <p className="single-room__info__p">{breakfast}</p>
           </div>
         ) : (
           <div></div>
@@ -72,7 +72,7 @@ const SingleRoom = props => {
         {allInclusive ? (
           <div className="single-room__feature">
             <AllInclusiveIcon />
-            {allInclusive}
+            <p className="single-room__info__p">{allInclusive}</p>
           </div>
         ) : (
           <div></div>

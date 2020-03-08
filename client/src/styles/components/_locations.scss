@@ -14,12 +14,6 @@
     padding: 1rem;
     outline: 1rem dashed $color-primary;
     align-self: center;
-
-    @media only screen and (max-width: $bp-900) {
-      width: 100% !important;
-      height: 450px !important;
-      zoom: 0 !important;
-    }
   }
 
   &__heading {
@@ -50,6 +44,10 @@
         letter-spacing: 1px;
 
         font-family: $font-display;
+
+        @media only screen and (max-width: $bp-700) {
+          font-size: 1rem;
+        }
       }
     }
   }
@@ -58,6 +56,11 @@
     width: 2.5rem;
     fill: $color-primary-dark;
     margin-bottom: -0.5rem;
+
+    @media only screen and (max-width: $bp-700) {
+      height: 1.5rem;
+      width: 1.5rem;
+    }
 
     &:hover {
       animation: pulse 1s ease-out infinite both;

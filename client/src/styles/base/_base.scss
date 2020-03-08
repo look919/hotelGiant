@@ -43,6 +43,9 @@ body {
     @media only screen and (max-width: $bp-900) {
       grid-template-rows: 7rem min-content 100vh;
     }
+    @media only screen and (max-width: $bp-700) {
+      grid-template-rows: 7rem min-content min-content;
+    }
 
     background-image: linear-gradient(
       to right bottom,

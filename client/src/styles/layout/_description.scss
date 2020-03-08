@@ -46,6 +46,9 @@
     padding: 2rem 8rem;
     text-align: center;
 
+    @media only screen and (max-width: $bp-1100) {
+      padding: 1.7rem 3rem;
+    }
     @media only screen and (max-width: $bp-900) {
       padding: 1rem 3rem;
     }

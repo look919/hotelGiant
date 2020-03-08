@@ -49,9 +49,13 @@ export const getUser = id => async dispatch => {
   }
 };
 
-export const updateUserExpenses = (id, expenses) => async dispatch => {
+export const updateUserExpenses = (
+  id,
+  expenses,
+  totalExpenses
+) => async dispatch => {
   try {
-    const body = JSON.stringify({ expenses });
+    const body = JSON.stringify({ expenses, totalExpenses });
 
     const config = {
       headers: {

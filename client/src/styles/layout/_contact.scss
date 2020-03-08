@@ -38,6 +38,11 @@
         font-family: $font-display;
         font-size: 1.8rem;
         margin-bottom: 2rem;
+
+        @media only screen and (max-width: $bp-900) {
+          font-size: 1.4rem;
+          margin-bottom: 1.5rem;
+        }
       }
 
       &__input,
@@ -59,12 +64,21 @@
         border-radius: 1rem;
         transition: all 0.4s;
 
+        @media only screen and (max-width: $bp-900) {
+          font-size: 1.2rem;
+          margin: 0.5rem;
+        }
+
         &:focus {
           outline: none;
         }
       }
       &__input {
         padding: 1.2rem 2rem;
+
+        @media only screen and (max-width: $bp-900) {
+          padding: 1rem 1.5rem;
+        }
 
         &:focus {
           outline: none;
@@ -79,6 +93,10 @@
         border-radius: 2rem;
         resize: none;
 
+        @media only screen and (max-width: $bp-900) {
+          height: 16rem;
+          padding: 1rem 1.5rem;
+        }
         &:focus {
           outline: none;
           transform: translateX(1rem);

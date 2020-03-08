@@ -14,7 +14,8 @@ import Logo from '../img/logo2.png';
 import { UsersIcon, ArrowLeft } from '../img/Icons';
 
 const BookPage = ({ createOrder }) => {
-  const hash = window.location.hash.substr(1) || 'Room nr 1';
+  let hash = window.location.hash.substr(1);
+  if (!hash) hash = 'Room nr 1';
 
   const [formData, setFormData] = useState({
     fname: '',
@@ -207,7 +208,7 @@ const BookPage = ({ createOrder }) => {
               </option>
               <option
                 className="bookpage__form__select__item"
-                value="Double bed room"
+                value="Doublebedroom"
               >
                 Double bed room
               </option>

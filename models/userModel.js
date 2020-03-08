@@ -1,6 +1,5 @@
 const crypto = require('crypto');
 const mongoose = require('mongoose');
-const validator = require('validator');
 const bcrypt = require('bcryptjs');
 
 const userSchema = new mongoose.Schema({
@@ -44,6 +43,10 @@ const userSchema = new mongoose.Schema({
         cost: Number
       }
     ]
+  },
+  totalExpenses: {
+    type: Number,
+    default: 0
   },
   createdAt: {
     type: Date,
