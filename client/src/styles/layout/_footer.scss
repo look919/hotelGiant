@@ -44,6 +44,13 @@
       @media only screen and (max-width: $bp-900) {
         font-size: 1.1rem;
       }
+      @media only screen and (max-width: $bp-500) {
+        font-size: 1rem;
+        padding: initial 1.5rem;
+      }
+      @media only screen and (max-width: $bp-400) {
+        font-size: 0.8rem;
+      }
 
       &__item {
         cursor: pointer;
@@ -68,6 +75,13 @@
     }
     @media only screen and (max-width: $bp-900) {
       font-size: 1.1rem;
+    }
+    @media only screen and (max-width: $bp-500) {
+      font-size: 1rem;
+      padding: initial 1.5rem;
+    }
+    @media only screen and (max-width: $bp-400) {
+      font-size: 0.8rem;
     }
   }
 }

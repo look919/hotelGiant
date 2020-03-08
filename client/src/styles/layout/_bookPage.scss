@@ -76,6 +76,10 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+
+      @media only screen and (max-width: $bp-500) {
+        width: 60%;
+      }
     }
     &__right {
       width: 50%;
@@ -96,6 +100,10 @@
       background-color: $color-secondary-dark;
       border: 1px solid $color-grey-light-2;
       border-radius: 1rem;
+
+      @media only screen and (max-width: $bp-500) {
+        margin-bottom: 1rem;
+      }
 
       &__item {
         display: block;
@@ -127,6 +135,10 @@
       color: $color-grey-light-1;
 
       transition: all 0.4s;
+
+      @media only screen and (max-width: $bp-900) {
+        margin: 1rem 0;
+      }
 
       &:placeholder-shown {
         border: 1px solid $color-black;
@@ -204,4 +216,8 @@
     rgba($color-secondary, 1),
     rgba($color-secondary-dark, 1)
   );
+
+  @media only screen and (max-width: $bp-500) {
+    width: 40%;
+  }
 }

@@ -64,8 +64,8 @@ const AdminLayout = ({
 
   return (
     <section className="container--guestPage">
-      <div className="guestPage__services">
-        <h3 className="heading-3">Bookings:</h3>
+      <div className="guestPage__services guestPage__services--admin">
+        <h3 className="heading-3 guestPage__services__subheading">Bookings:</h3>
 
         <div className="guestPage__services__bookings">
           <select
@@ -152,7 +152,7 @@ const AdminLayout = ({
           )}
         </div>
 
-        <h3 className="heading-3">Guests:</h3>
+        <h3 className="heading-3 guestPage__services__subheading">Guests:</h3>
         <div className="guestPage__services__guests">
           <select
             className="bookpage__form__select"
@@ -234,7 +234,6 @@ const AdminLayout = ({
               <p>Login: {users.userLoaded.data.data.login}</p>
               <p>Stay duration: {users.userLoaded.data.data.days} days</p>
               <p>Room: {users.userLoaded.data.data.room.name}</p>
-              <p>expenses: {users.userLoaded.data.data.expenses}</p>
             </div>
           )}
         </div>

@@ -1,12 +1,12 @@
-import React from "react";
+import React from 'react';
 
-import hotelOne from "../img/hotel-1.jpg";
-import hotelTwo from "../img/hotel-2.jpg";
-import hotelThree from "../img/hotel-3.jpg";
+import hotelOne from '../img/hotel-1.jpg';
+import hotelTwo from '../img/hotel-2.jpg';
+import hotelThree from '../img/hotel-3.jpg';
 
 const Description = () => (
   <section className="description">
-    <h2 className="heading-2" id="description">
+    <h2 className="heading-2 description__header" id="description">
       About us
     </h2>
     <div className="description__photosAndInfo">

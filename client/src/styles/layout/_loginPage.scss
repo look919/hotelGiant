@@ -4,11 +4,19 @@
     position: absolute;
     top: 30rem;
     left: 8rem;
-    width: 100%;
+    width: calc(100% - 8rem);
 
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+
+    @media only screen and (max-width: $bp-700) {
+      left: 0;
+      top: 20rem;
+      width: 100%;
+
+      align-items: center;
+    }
   }
 
   &__input {
@@ -16,8 +24,15 @@
     color: $color-black;
     font-family: $font-primary;
     font-size: 1.6rem;
+    padding: 1.2rem 2rem;
+
     margin-bottom: 1rem;
     margin-left: 1rem;
+
+    @media only screen and (max-width: $bp-700) {
+      width: 50%;
+      margin: 1rem 0;
+    }
 
     background-image: linear-gradient(
       to right bottom,
@@ -28,8 +43,6 @@
     border: 1px solid $color-grey-light-2;
     border-radius: 1rem;
     transition: all 0.4s;
-
-    padding: 1.2rem 2rem;
 
     &:focus {
       outline: none;
@@ -43,6 +56,10 @@
     padding: 1.2rem 2rem;
     margin-bottom: 1rem;
     margin-left: 1rem;
+    @media only screen and (max-width: $bp-700) {
+      width: 50%;
+      margin: 1rem 0;
+    }
   }
   &__btn {
     width: 30%;
@@ -50,6 +67,10 @@
     color: $color-black;
     font-family: $font-primary;
     font-size: 1.6rem;
+    @media only screen and (max-width: $bp-700) {
+      width: 60%;
+      margin: 1rem 0;
+    }
 
     border: 1px solid $color-grey-light-2;
     border-radius: 1rem;
@@ -62,6 +83,9 @@
     height: 7rem;
     width: 20%;
 
+    @media only screen and (max-width: $bp-700) {
+      width: 40%;
+    }
     position: absolute;
     top: 0;
     left: 0;

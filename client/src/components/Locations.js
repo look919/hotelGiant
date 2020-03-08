@@ -41,7 +41,7 @@ export const Locations = () => {
     height: is900px ? '450px' : '75vh',
     zoom: is900px ? 3 : 4
   });
-  console.log(viewport);
+
   return (
     <section className="locations">
       <h2 className="heading-2">You can find us all over the Europe</h2>

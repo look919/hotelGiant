@@ -81,6 +81,9 @@
       @media only screen and (max-width: $bp-1100) {
         font-size: 0.8rem;
       }
+      @media only screen and (max-width: $bp-400) {
+        display: none;
+      }
     }
   }
 

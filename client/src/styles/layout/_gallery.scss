@@ -13,6 +13,10 @@
     grid-template-rows: repeat(4, 1fr);
     grid-gap: 1.2rem;
     padding: 2rem;
+
+    @media only screen and (max-width: $bp-500) {
+      height: 30rem;
+    }
   }
 
   &__photo {

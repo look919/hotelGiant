@@ -48,18 +48,16 @@ const LoginPage = ({ login, auth }) => {
           onChange={e => onChange(e)}
           required
         />
-        <div className="form-group">
-          <input
-            className="loginpage__input"
-            type="password"
-            placeholder="password"
-            minLength="8"
-            name="password"
-            value={formData.password}
-            onChange={e => onChange(e)}
-            required
-          />
-        </div>
+        <input
+          className="loginpage__input"
+          type="password"
+          placeholder="password"
+          minLength="8"
+          name="password"
+          value={formData.password}
+          onChange={e => onChange(e)}
+          required
+        />
         <input type="submit" className="btn loginpage__btn" value="Login" />
         <p className="devinfo devinfo--left">Test users for everyone</p>
         <p className="devinfo devinfo--left">

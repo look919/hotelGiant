@@ -1,4 +1,5 @@
 import React from 'react';
+import { useMediaQuery } from 'react-responsive';
 
 import Header from './Header';
 import SideNav from './SideNav';
@@ -12,12 +13,14 @@ import Gallery from './Gallery';
 import Footer from './Footer';
 
 const DashboardPage = () => {
+  const is600px = useMediaQuery({ query: '(max-width: 600px)' });
+
   return (
     <main className="container">
       <Header />
       <SideNav />
       <Description />
-      <Locations />
+      {is600px || <Locations />}
       <Features />
       <Rooms />
       <Reviews />

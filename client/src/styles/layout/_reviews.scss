@@ -26,6 +26,9 @@
       grid-row-gap: 1rem;
       grid-column-gap: 0.8rem;
     }
+    @media only screen and(max-width: $bp-1100) {
+      padding: 2rem 0;
+    }
   }
   &__left {
     clip-path: polygon(0 0, 80% 0%, 100% 100%, 0% 100%);
@@ -34,6 +37,9 @@
       rgba($color-primary-dark, 0.9),
       rgba($color-primary, 0.9)
     );
+    @media only screen and(max-width: $bp-1100) {
+      padding-right: 5px;
+    }
   }
   &__right {
     clip-path: polygon(20% 0, 100% 0, 100% 100%, 0% 100%);
@@ -42,6 +48,9 @@
       rgba($color-primary-dark, 0.9),
       rgba($color-primary, 0.9)
     );
+    @media only screen and(max-width: $bp-1100) {
+      padding-left: 5px;
+    }
   }
 
   &__photo {
