@@ -7,7 +7,9 @@ import {
   AUTH_FAIL,
   LOGOUT,
   UPDATE_PASSWORD_SUCCESS,
-  UPDATE_PASSWORD_FAIL
+  UPDATE_PASSWORD_FAIL,
+  UPDATE_USER_SUCCESS,
+  UPDATE_USER_FAIL
 } from '../actions/types';
 
 const initialState = {
@@ -43,6 +45,14 @@ export default function(state = initialState, action) {
         isAuthenticated: false,
         user: null
       };
+    case UPDATE_USER_SUCCESS:
+      return {
+        ...state,
+        user: payload,
+        isAuthenticated: true
+      };
+
+    case UPDATE_USER_FAIL:
     case UPDATE_PASSWORD_FAIL:
     case REGISTER_SUCCESS:
     case REGISTER_FAIL:

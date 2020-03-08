@@ -50,6 +50,7 @@ export const register = (
     room,
     days
   });
+
   const config = {
     headers: {
       'Content-Type': 'application/json'
@@ -119,7 +120,7 @@ export const updatePassword = (
     const res = await axios.patch('/api/v1/users/updatepassword', body, config);
     dispatch({
       type: UPDATE_PASSWORD_SUCCESS,
-      payload: res.data
+      payload: res.data.data
     });
     dispatch(setAlert('Password changed successfully', 'success'));
   } catch (err) {

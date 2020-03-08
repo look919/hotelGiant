@@ -1,41 +1,106 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { NavLink, Redirect } from 'react-router-dom';
 import { UsersIcon, HomePageIcon, PasswordIcon } from '../../img/Icons';
 import { logout } from './../../actions/auth';
+import { updateUserExpenses } from './../../actions/users';
 
 import Restaurant from '../../img/gallery-restaurant.jpg';
 import Gym from '../../img/gallery-gym.jpg';
 import GameRoom from '../../img/gallery-gameroom.jpg';
 import Logo from '../../img/logo2.png';
 
-const GuestLayout = ({ user, auth, logout }) => {
+const GuestLayout = ({ user, auth, logout, updateUserExpenses }) => {
   if (!auth) {
     return <Redirect to={'/'} />;
   }
 
+  useEffect(() => {
+    const checkIfUserHasExpenses = async () => {
+      if (user.expenses.length === 0) {
+        const roomFee = [
+          { expense: 'Hotel room fee', cost: user.room.price * user.days }
+        ];
+        await updateUserExpenses(user._id, roomFee);
+      }
+    };
+    checkIfUserHasExpenses();
+  }, [updateUserExpenses]);
+
   const [purchaseOptions, setPurchaseOptions] = useState({
-    sevice: '',
+    service: '',
     codeInputRestaurant: false,
     codeInputGameRoom: false,
     codeInputGym: false,
     devInfo: false
   });
 
+  const handleSetExpenseFromCodeService = (
+    code1,
+    code2,
+    code3,
+    object1,
+    object2,
+    object3
+  ) => {
+    const newUserExpenses = user.expenses;
+    let bought = false;
+    switch (purchaseOptions.service) {
+      case code1:
+        newUserExpenses.push(object1);
+        updateUserExpenses(user._id, newUserExpenses);
+        bought = true;
+        break;
+      case code2:
+        newUserExpenses.push(object2);
+        updateUserExpenses(user._id, newUserExpenses);
+        bought = true;
+        break;
+      case code3:
+        newUserExpenses.push(object3);
+        updateUserExpenses(user._id, newUserExpenses);
+        bought = true;
+        break;
+      default:
+        break;
+    }
+
+    if (bought) {
+      setPurchaseOptions({
+        ...purchaseOptions,
+        codeInputGym: false,
+        codeInputRestaurant: false,
+        codeInputGameRoom: false,
+        devInfo: false,
+        service: ''
+      });
+    } else {
+      setPurchaseOptions({
+        devInfo: true
+      });
+    }
+  };
+
   const handleRestaurantButton = e => {
     e.preventDefault();
     if (!purchaseOptions.codeInputRestaurant) {
       setPurchaseOptions({
         ...purchaseOptions,
-        codeInputRestaurant: true
+        codeInputRestaurant: true,
+        codeInputGameRoom: false,
+        codeInputGym: false,
+        service: ''
       });
     } else {
-      setPurchaseOptions({
-        ...purchaseOptions,
-        devInfo: true,
-        codeInputRestaurant: false
-      });
+      handleSetExpenseFromCodeService(
+        '2555',
+        '4612',
+        '7433',
+        { expense: 'Breakfast', cost: 5 },
+        { expense: 'All meals for 1 day', cost: 9 },
+        { expense: 'All meals for stay peroid', cost: 15 }
+      );
     }
   };
   const handleGameRoomButton = e => {
@@ -43,14 +108,20 @@ const GuestLayout = ({ user, auth, logout }) => {
     if (!purchaseOptions.codeInputGameRoom) {
       setPurchaseOptions({
         ...purchaseOptions,
-        codeInputGameRoom: true
+        codeInputGameRoom: true,
+        codeInputRestaurant: false,
+        codeInputGym: false,
+        service: ''
       });
     } else {
-      setPurchaseOptions({
-        ...purchaseOptions,
-        devInfo: true,
-        codeInputGameRoom: false
-      });
+      handleSetExpenseFromCodeService(
+        '2123',
+        '4003',
+        '7213',
+        { expense: 'Game room - 2 hours ticket', cost: 5 },
+        { expense: 'Game room - 1 day ticket', cost: 9 },
+        { expense: 'Game room - stay peroid ticket', cost: 15 }
+      );
     }
   };
   const handleGymButton = e => {
@@ -58,15 +129,27 @@ const GuestLayout = ({ user, auth, logout }) => {
     if (!purchaseOptions.codeInputGym) {
       setPurchaseOptions({
         ...purchaseOptions,
-        codeInputGym: true
+        codeInputGym: true,
+        codeInputRestaurant: false,
+        codeInputGameRoom: false,
+        service: ''
       });
     } else {
-      setPurchaseOptions({
-        ...purchaseOptions,
-        devInfo: true,
-        codeInputGym: false
-      });
+      handleSetExpenseFromCodeService(
+        '2443',
+        '4032',
+        '7993',
+        { expense: 'Gym - 2 hours ticket', cost: 5 },
+        { expense: 'Gym - 1 day ticket', cost: 9 },
+        { expense: 'Gym - stay peroid ticket', cost: 15 }
+      );
     }
+  };
+  const onInputChange = e => {
+    setPurchaseOptions({
+      ...purchaseOptions,
+      [e.target.name]: e.target.value
+    });
   };
 
   const onSubmit = async e => {
@@ -89,32 +172,35 @@ const GuestLayout = ({ user, auth, logout }) => {
               <h3 className="heading-3 guestPage__services__item__header">
                 Breakfast
               </h3>
-              <p className="devinfo">Cost 5$ | Code 7563</p>
+              <p className="devinfo">Cost 5$ | Code 2555</p>
             </div>
             <div>
               <h3 className="heading-3 guestPage__services__item__header">
                 All meals for 1 day only
               </h3>
-              <p className="devinfo">Cost 9$ Code 7003</p>
+              <p className="devinfo">Cost 9$ Code 4612</p>
             </div>
             <div>
               <h3 className="heading-3 guestPage__services__item__header">
                 All meals for the stay peroid
               </h3>
-              <p className="devinfo">Cost 15$ Code 7213</p>
+              <p className="devinfo">Cost 15$ Code 7433</p>
             </div>
             {purchaseOptions.codeInputRestaurant && (
               <input
+                name="service"
+                value={purchaseOptions.sevice}
                 className="guestPage__services__item__input"
                 placeholder="code of the service"
                 maxLength={4}
+                onChange={e => onInputChange(e)}
               />
             )}
             <button onClick={e => handleRestaurantButton(e)} className="btn">
               Purchase online
             </button>
             {purchaseOptions.devInfo && (
-              <p className="devinfo">This funcionality doesnt work just yet</p>
+              <p className="devinfo">Make sure your code is correct!</p>
             )}
           </div>
         </div>
@@ -129,13 +215,13 @@ const GuestLayout = ({ user, auth, logout }) => {
               <h3 className="heading-3 guestPage__services__item__header">
                 2hours ticket
               </h3>
-              <p className="devinfo">Cost 5$ | Code 4123</p>
+              <p className="devinfo">Cost 5$ | Code 2123</p>
             </div>
             <div>
               <h3 className="heading-3 guestPage__services__item__header">
                 1 day ticket
               </h3>
-              <p className="devinfo">Cost 9$ Code 7003</p>
+              <p className="devinfo">Cost 9$ Code 4003</p>
             </div>
             <div>
               <h3 className="heading-3 guestPage__services__item__header">
@@ -145,9 +231,13 @@ const GuestLayout = ({ user, auth, logout }) => {
             </div>
             {purchaseOptions.codeInputGameRoom && (
               <input
+                name="service"
+                value={purchaseOptions.sevice}
                 className="guestPage__services__item__input"
                 placeholder="code of the service"
                 maxLength={4}
+                minLength={4}
+                onChange={e => onInputChange(e)}
               />
             )}
             <button
@@ -158,7 +248,7 @@ const GuestLayout = ({ user, auth, logout }) => {
             </button>
             {purchaseOptions.devInfo && (
               <p className="devinfo guestPage__services__item__p">
-                This funcionality doesnt work just yet
+                Make sure your code is correct!
               </p>
             )}
           </div>
@@ -174,25 +264,29 @@ const GuestLayout = ({ user, auth, logout }) => {
               <h3 className="heading-3 guestPage__services__item__header">
                 2hours ticket
               </h3>
-              <p className="devinfo">Cost 5$ | Code 4123</p>
+              <p className="devinfo">Cost 5$ | Code 2443</p>
             </div>
             <div>
               <h3 className="heading-3 guestPage__services__item__header">
                 1 day ticket
               </h3>
-              <p className="devinfo">Cost 9$ Code 7003</p>
+              <p className="devinfo">Cost 9$ Code 4032</p>
             </div>
             <div>
               <h3 className="heading-3 guestPage__services__item__header">
                 Ticket for the stay peroid
               </h3>
-              <p className="devinfo">Cost 15$ Code 7213</p>
+              <p className="devinfo">Cost 15$ Code 7993</p>
             </div>
             {purchaseOptions.codeInputGym && (
               <input
+                name="service"
+                value={purchaseOptions.sevice}
                 className="guestPage__services__item__input"
                 placeholder="code of the service"
                 maxLength={4}
+                minLength={4}
+                onChange={e => onInputChange(e)}
               />
             )}
             <button
@@ -203,7 +297,7 @@ const GuestLayout = ({ user, auth, logout }) => {
             </button>
             {purchaseOptions.devInfo && (
               <p className="devinfo guestPage__services__item__p">
-                This funcionality doesnt work just yet
+                Make sure your code is correct!
               </p>
             )}
           </div>
@@ -224,14 +318,12 @@ const GuestLayout = ({ user, auth, logout }) => {
         <div className="guestPage__info__list guestPage__info__list--expenses">
           <h3 className="heading-4 guestPage__info__heading">Your Expenses</h3>
           <li className="guestPage__info__list">
-            <ul className="guestPage__info__list__item">
-              Room cost: {user.room.price}$ * {user.days}days ={' '}
-              {user.room.price * user.days}$
-            </ul>
-            <p className="devinfo">
-              Expenses are not saved to db just yet, will add that with online
-              payments later
-            </p>
+            {user.expenses.length > 0 &&
+              user.expenses.map(exp => (
+                <ul key={exp.expense} className="guestPage__info__list__item">
+                  {exp.expense}: {exp.cost}$
+                </ul>
+              ))}
           </li>
         </div>
         <nav className="guestPage__info__nav">
@@ -254,7 +346,8 @@ const GuestLayout = ({ user, auth, logout }) => {
 };
 GuestLayout.propTypes = {
   user: PropTypes.object.isRequired,
-  logout: PropTypes.func.isRequired
+  logout: PropTypes.func.isRequired,
+  updateUserExpenses: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
@@ -262,4 +355,6 @@ const mapStateToProps = state => ({
   user: state.auth.user
 });
 
-export default connect(mapStateToProps, { logout })(GuestLayout);
+export default connect(mapStateToProps, { logout, updateUserExpenses })(
+  GuestLayout
+);

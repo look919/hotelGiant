@@ -35,6 +35,22 @@ const createSendToken = (user, statusCode, res) => {
   });
 };
 
+exports.getLoggedInUser = () =>
+  catchAsync(async (req, res, next) => {
+    const user = await User.findById(req.user).populate('room');
+
+    if (!user) {
+      return next(new AppError('No document found with that ID', 404));
+    }
+
+    res.status(200).json({
+      status: 'success',
+      data: {
+        data: user
+      }
+    });
+  });
+
 exports.signup = catchAsync(async (req, res, next) => {
   const newUser = await User.create({
     login: req.body.login,

@@ -5,7 +5,9 @@ import {
   GET_ALL_USERS_SUCCESS,
   GET_ALL_USERS_FAIL,
   GET_USER_SUCCESS,
-  GET_USER_FAIL
+  GET_USER_FAIL,
+  UPDATE_USER_SUCCESS,
+  UPDATE_USER_FAIL
 } from './types';
 
 export const getAllUsers = ({
@@ -31,7 +33,6 @@ export const getAllUsers = ({
 
 export const getUser = id => async dispatch => {
   try {
-    console.log(id);
     const res = await axios.get(`/api/v1/users/${id}`);
 
     dispatch({
@@ -43,6 +44,32 @@ export const getUser = id => async dispatch => {
 
     dispatch({
       type: GET_USER_FAIL,
+      payload: { msg: 'error', status: 'not found' }
+    });
+  }
+};
+
+export const updateUserExpenses = (id, expenses) => async dispatch => {
+  try {
+    const body = JSON.stringify({ expenses });
+
+    const config = {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    };
+
+    const res = await axios.patch(`/api/v1/users/${id}`, body, config);
+
+    dispatch({
+      type: UPDATE_USER_SUCCESS,
+      payload: res.data.data.data
+    });
+  } catch (err) {
+    dispatch(setAlert(err.response.data.message, 'danger'));
+
+    dispatch({
+      type: UPDATE_USER_FAIL,
       payload: { msg: 'error', status: 'not found' }
     });
   }
