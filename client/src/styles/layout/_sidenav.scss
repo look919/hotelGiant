@@ -197,13 +197,18 @@
       height: 3rem;
       width: 3rem;
       fill: darken($color-primary-dark, 20%);
+
+      @media only screen and (max-width: $bp-1500) {
+        height: 2.4rem;
+        width: 2.4rem;
+      }
     }
     &__label {
       color: $color-white;
       font-size: 1.1rem;
       text-decoration: none;
 
-      @media only screen and (max-width: $bp-1300) {
+      @media only screen and (max-width: $bp-1500) {
         font-size: 1rem;
       }
       //margin-bottom: 1.5rem;

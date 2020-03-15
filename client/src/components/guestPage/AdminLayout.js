@@ -252,7 +252,7 @@ const AdminLayout = ({
 
           <NavLink to="/registerpage" className="sidenav__users">
             <NewAccountIcon />
-            <label className="sidenav__users__label">Create account</label>
+            <label className="sidenav__users__label">New account</label>
           </NavLink>
 
           <NavLink to="/updatepassword" className="sidenav__users">

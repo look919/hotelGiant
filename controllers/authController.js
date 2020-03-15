@@ -35,22 +35,6 @@ const createSendToken = (user, statusCode, res) => {
   });
 };
 
-exports.getLoggedInUser = () =>
-  catchAsync(async (req, res, next) => {
-    const user = await User.findById(req.user).populate('room');
-
-    if (!user) {
-      return next(new AppError('No document found with that ID', 404));
-    }
-
-    res.status(200).json({
-      status: 'success',
-      data: {
-        data: user
-      }
-    });
-  });
-
 exports.signup = catchAsync(async (req, res, next) => {
   const newUser = await User.create({
     login: req.body.login,
@@ -147,7 +131,7 @@ exports.isLoggedIn = async (req, res, next) => {
     try {
       // 1) verify token
       const decoded = await promisify(jwt.verify)(
-        req.cookies.jwt,
+        token,
         process.env.JWT_SECRET
       );
 
@@ -167,7 +151,6 @@ exports.isLoggedIn = async (req, res, next) => {
       return next();
     }
   }
-  next();
 };
 
 exports.restrictTo = (...roles) => {

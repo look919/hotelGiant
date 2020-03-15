@@ -4,16 +4,19 @@ const authController = require('./../controllers/authController');
 
 const router = express.Router();
 
-router.get('/auth', authController.isLoggedIn, authController.getLoggedInUser);
+router.get('/auth', authController.isLoggedIn);
 
 router.post('/signup', authController.signup);
 router.post('/login', authController.login);
 router.post('/logout', authController.logout);
+
 //USERS AUTHENTICATED
 router.use(authController.protect);
+
 router.patch('/updatepassword', authController.updatePassword);
 
 router.route('/:id').patch(userController.updateUser);
+
 //RESTRICTED TO ADMIN
 router.use(authController.restrictTo('admin'));
 

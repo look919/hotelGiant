@@ -31,20 +31,20 @@ const sendErrorDev = (err, req, res) => {
 
   // A) API
   if (req.originalUrl.startsWith('/api')) {
-    return res.status(statusCode).json({
+    res.status(statusCode).json({
       status: err.status,
       error: err,
       message: err.message,
       stack: err.stack
     });
+  } else {
+    // B) RENDERED WEBSITE
+    console.error('ERROR 💥', err);
+    res.status(statusCode).json({
+      title: 'Something went wrong!',
+      msg: err.message
+    });
   }
-
-  // B) RENDERED WEBSITE
-  console.error('ERROR 💥', err);
-  return res.status(statusCode).json({
-    title: 'Something went wrong!',
-    msg: err.message
-  });
 };
 
 const sendErrorProd = (err, req, res) => {
@@ -88,8 +88,6 @@ const sendErrorProd = (err, req, res) => {
 };
 
 module.exports = (err, req, res, next) => {
-  // console.log(err.stack);
-
   err.statusCode = err.statusCode || 500;
   err.status = err.status || 'error';
 

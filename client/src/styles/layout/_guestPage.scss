@@ -204,15 +204,15 @@
         }
       }
       &__header {
-        @media only screen and (max-width: $bp-1300) {
-          font-size: 1.6rem;
+        @media only screen and (max-width: $bp-1500) {
+          font-size: 1.2rem;
         }
 
         @media only screen and (max-width: $bp-1300) {
-          font-size: 1.2rem;
+          font-size: 1rem;
         }
         @media only screen and (max-width: $bp-1100) {
-          font-size: 1rem;
+          font-size: 0.8rem;
         }
       }
       &__p {
@@ -221,11 +221,14 @@
         margin-top: 0.5rem;
         text-align: center;
 
+        @media only screen and (max-width: $bp-1500) {
+          font-size: 1.1rem;
+        }
         @media only screen and (max-width: $bp-1300) {
-          font-size: 1.2rem;
+          font-size: 0.9rem;
         }
         @media only screen and (max-width: $bp-1100) {
-          font-size: 1rem;
+          font-size: 0.7rem;
           margin-top: 2rem;
         }
       }
