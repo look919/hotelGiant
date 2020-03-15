@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import LocationItem from './LocationItem';
 import ReactMapGL, { Marker } from 'react-map-gl';
 import { useMediaQuery } from 'react-responsive';
-import HeadShake from 'react-reveal/HeadShake';
 
 export const Locations = () => {
   const is900px = useMediaQuery({ query: '(max-width: 900px)' });
@@ -44,27 +43,25 @@ export const Locations = () => {
   });
 
   return (
-    <HeadShake>
-      <section className="locations">
-        <h2 className="heading-2">You can find us all over the Europe</h2>
-        <ReactMapGL
-          {...viewport}
-          mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
-          mapStyle={'mapbox://styles/wirkus919/ck6rtz1ff4syj1ioftcz8tu7j'}
-          className="locations__map"
-        >
-          {hotels.map(hotel => (
-            <Marker
-              key={hotel.name}
-              latitude={hotel.latitude}
-              longitude={hotel.longitude}
-            >
-              <LocationItem town={hotel.name} />
-            </Marker>
-          ))}
-        </ReactMapGL>
-      </section>
-    </HeadShake>
+    <section className="locations">
+      <h2 className="heading-2">You can find us all over the Europe</h2>
+      <ReactMapGL
+        {...viewport}
+        mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
+        mapStyle={'mapbox://styles/wirkus919/ck6rtz1ff4syj1ioftcz8tu7j'}
+        className="locations__map"
+      >
+        {hotels.map(hotel => (
+          <Marker
+            key={hotel.name}
+            latitude={hotel.latitude}
+            longitude={hotel.longitude}
+          >
+            <LocationItem town={hotel.name} />
+          </Marker>
+        ))}
+      </ReactMapGL>
+    </section>
   );
 };
 

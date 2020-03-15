@@ -1,5 +1,4 @@
 import React from 'react';
-import Flip from 'react-reveal/Flip';
 
 import hotelOne from '../img/hotel-1.jpg';
 import hotelTwo from '../img/hotel-2.jpg';
@@ -27,23 +26,20 @@ const Description = () => (
         alt="hotel-3"
       />
       <div className="description__info">
-        <Flip left cascade>
-          <p className="description__info__paragraph">
-            Hotel Giant is number one rated Lorem ipsum dolor sit amet,
-            consectetur adipiscing elit. Quisque convallis tellus at turpis
-            consectetur finibus. Curabitur sed eleifend ipsum. Phasellus ornare
-            justo nec odio dapibus convallis. Maecenas vel sodales risus,
-            pulvinar consectetur augue. Aenean hendrerit tincidunt nunc sed
-            condimentum. Suspendisse feugiat tempor neque, sit amet accumsan
-            metus maximus vitae. Nulla turpis ligula, ultrices nec leo at,
-            posuere viverra diam. Fusce consectetur, massa ac dictum ultrices,
-            nibh libero pellentesque dui, nec aliquet metus dui id eros. Nam
-            tincidunt iaculis finibus. Vestibulum eu vulputate sapien. Praesent
-            bibendum ligula libero, mattis bibendum magna feugiat sit amet.
-            Praesent eu feugiat nisl. In purus ipsum, lacinia ac nibh vel,
-            rhoncus finibus enim.
-          </p>
-        </Flip>
+        <p className="description__info__paragraph">
+          Hotel Giant is number one rated Lorem ipsum dolor sit amet,
+          consectetur adipiscing elit. Quisque convallis tellus at turpis
+          consectetur finibus. Curabitur sed eleifend ipsum. Phasellus ornare
+          justo nec odio dapibus convallis. Maecenas vel sodales risus, pulvinar
+          consectetur augue. Aenean hendrerit tincidunt nunc sed condimentum.
+          Suspendisse feugiat tempor neque, sit amet accumsan metus maximus
+          vitae. Nulla turpis ligula, ultrices nec leo at, posuere viverra diam.
+          Fusce consectetur, massa ac dictum ultrices, nibh libero pellentesque
+          dui, nec aliquet metus dui id eros. Nam tincidunt iaculis finibus.
+          Vestibulum eu vulputate sapien. Praesent bibendum ligula libero,
+          mattis bibendum magna feugiat sit amet. Praesent eu feugiat nisl. In
+          purus ipsum, lacinia ac nibh vel, rhoncus finibus enim.
+        </p>
       </div>
     </div>
   </section>
