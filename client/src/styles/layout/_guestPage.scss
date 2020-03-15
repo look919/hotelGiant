@@ -100,7 +100,7 @@
 
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: 10rem repeat(2, 40vh);
+    grid-template-rows: 10rem repeat(2, 35vh);
     grid-gap: 1.5rem;
     align-items: center;
     justify-items: center;
@@ -235,6 +235,11 @@
       &__btn {
         grid-column: 1 / -1;
 
+        @media only screen and (max-width: $bp-1500) {
+          width: 50%;
+          font-size: 1.2rem;
+          padding: 1.2rem 1.6rem;
+        }
         @media only screen and (max-width: $bp-1100) {
           width: 50%;
           font-size: 1rem;
