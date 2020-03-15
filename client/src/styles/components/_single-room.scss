@@ -24,6 +24,10 @@
     padding: 1rem;
     margin-left: 0.5rem;
     transform: translateY(-25%);
+
+    @media only screen and (max-width: $bp-500) {
+      margin-left: 1rem;
+    }
   }
   &__btn {
     grid-row: 1 / 2;
@@ -41,7 +45,9 @@
 
     @media only screen and (max-width: $bp-500) {
       font-size: 1rem;
-      padding: 1rem 1.4rem;
+      width: 40%;
+      text-align: center;
+      margin-right: 1rem;
     }
 
     transition: all 0.5s;
@@ -77,12 +83,19 @@
       fill: $color-black;
       margin-right: 0.5rem;
 
+      @media only screen and (max-width: $bp-1500) {
+        height: 2rem;
+        width: 2rem;
+      }
       @media only screen and (max-width: $bp-1100) {
         height: 1.5rem;
         width: 1.5rem;
       }
     }
     &__p {
+      @media only screen and (max-width: $bp-1500) {
+        font-size: 1rem;
+      }
       @media only screen and (max-width: $bp-1100) {
         font-size: 0.8rem;
       }
