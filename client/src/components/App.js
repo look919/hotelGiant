@@ -13,15 +13,14 @@ import LoginPage from './LoginPage';
 import GuestPage from './guestPage/GuestPage';
 import UpdatePassword from './UpdatePassword';
 import RegisterPage from './RegisterPage';
-require('dotenv').config();
 
 const App = () => {
   if (localStorage.token) {
     setAuthToken(localStorage.token);
+    useEffect(() => {
+      store.dispatch(loadUser());
+    }, []);
   }
-  useEffect(() => {
-    store.dispatch(loadUser());
-  }, []);
 
   return (
     <Provider store={store}>
