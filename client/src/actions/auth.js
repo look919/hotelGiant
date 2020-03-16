@@ -27,7 +27,9 @@ export const loadUser = () => async dispatch => {
       payload: res.data.user
     });
   } catch (err) {
-    dispatch(setAlert(err.response.data.message, 'danger'));
+    dispatch(
+      setAlert('Something went wrong with your authentication', 'danger')
+    );
     dispatch({
       type: AUTH_FAIL
     });
