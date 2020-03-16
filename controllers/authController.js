@@ -126,7 +126,6 @@ exports.protect = catchAsync(async (req, res, next) => {
 // Only for rendered pages, no errors!
 exports.isLoggedIn = async (req, res, next) => {
   const token = req.header('Authentication');
-  if (token !== res.cookies.jwt) return next(); //if tokenin localstorage is diffrent that cookies one
 
   if (token) {
     try {
@@ -152,7 +151,6 @@ exports.isLoggedIn = async (req, res, next) => {
       return next();
     }
   }
-  return next();
 };
 
 exports.restrictTo = (...roles) => {
