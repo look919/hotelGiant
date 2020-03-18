@@ -43,7 +43,8 @@ exports.signup = catchAsync(async (req, res, next) => {
     role: req.body.role,
     hotel: req.body.hotel,
     room: req.body.room,
-    days: req.body.days
+    days: req.body.days,
+    expenses: req.body.expenses
   });
   res.status(201).json({
     status: 'success',

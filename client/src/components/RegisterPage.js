@@ -14,17 +14,77 @@ const RegisterPage = ({ register, auth, user }) => {
     passwordConfirm: '',
     hotel: 'Warsaw - Zwyciestwa 32',
     room: '5e3abeb9b5628623182741be',
-    days: ''
+    days: '',
+    roomPrice: 0
   });
-  const { login, password, passwordConfirm, hotel, room, days } = formData;
+  const {
+    login,
+    password,
+    passwordConfirm,
+    hotel,
+    room,
+    days,
+    roomPrice
+  } = formData;
 
-  const onChange = e =>
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+  const onChange = e => {
+    switch (room) {
+      case '5e3abeb9b5628623182741be':
+        setFormData({
+          ...formData,
+          roomPrice: 33,
+          [e.target.name]: e.target.value
+        });
+        break;
+      case '5e3ac1d484bcca1888311b42':
+        setFormData({
+          ...formData,
+          roomPrice: 50,
+          [e.target.name]: e.target.value
+        });
+        break;
+      case '5e3ac1ed84bcca1888311b43':
+        setFormData({
+          ...formData,
+          roomPrice: 84,
+          [e.target.name]: e.target.value
+        });
+        break;
+      case '5e3ac21984bcca1888311b44':
+        setFormData({
+          ...formData,
+          roomPrice: 59,
+          [e.target.name]: e.target.value
+        });
+        break;
+      case '5e3ac22d84bcca1888311b45':
+        setFormData({
+          ...formData,
+          roomPrice: 92,
+          [e.target.name]: e.target.value
+        });
+        break;
+      case '5e3ac24184bcca1888311b46':
+        setFormData({
+          ...formData,
+          roomPrice: 124,
+          [e.target.name]: e.target.value
+        });
+        break;
+      default:
+        setFormData({
+          ...formData,
+          roomPrice: 33,
+          [e.target.name]: e.target.value
+        });
+        break;
+    }
+  };
 
   const onSubmit = async e => {
     e.preventDefault();
 
-    register(login, password, passwordConfirm, hotel, room, days);
+    register(login, password, passwordConfirm, hotel, room, days, roomPrice);
 
     setFormData({
       login: '',
@@ -32,7 +92,8 @@ const RegisterPage = ({ register, auth, user }) => {
       passwordConfirm: '',
       hotel: 'Warsaw - Zwyciestwa 32',
       room: '',
-      days: ''
+      days: '',
+      roomPrice: 0
     });
   };
 
@@ -83,14 +144,44 @@ const RegisterPage = ({ register, auth, user }) => {
           onChange={e => onChange(e)}
           required
         />
-        <input
-          className="loginpage__input"
-          placeholder="hotel"
+        <select
+          className="bookpage__form__select loginpage__select"
           name="hotel"
           value={formData.hotel}
           onChange={e => onChange(e)}
           required
-        />
+        >
+          <option
+            className="bookpage__form__select__item"
+            value="Warsaw - Zwyciestwa 32"
+          >
+            Warsaw - Zwyciestwa 32
+          </option>
+          <option
+            className="bookpage__form__select__item"
+            value="Bilbao - Barrencalle 23"
+          >
+            Bilbao - Barrencalle 23
+          </option>
+          <option
+            className="bookpage__form__select__item"
+            value="Naples - Spaccanapoli 8"
+          >
+            Naples - Spaccanapoli 8
+          </option>
+          <option
+            className="bookpage__form__select__item"
+            value="Brussels - Bonheur 11"
+          >
+            Brussels - Bonheur 11
+          </option>
+          <option
+            className="bookpage__form__select__item"
+            value="Prague - Pařížská Street 3"
+          >
+            Prague - Pařížská Street 3
+          </option>
+        </select>
 
         <select
           className="bookpage__form__select loginpage__select"

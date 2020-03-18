@@ -56,7 +56,7 @@ export const createOrder = (
 export const getAllOrders = ({ hotel, sort }) => async dispatch => {
   try {
     const res = await axios.get(
-      `/api/v1/orders?fields=_id&hotel=${hotel}&limit=5&sort=${sort}`
+      `/api/v1/orders?fields=_id,name,vorname&hotel=${hotel}&limit=5&sort=${sort}`
     );
 
     dispatch({

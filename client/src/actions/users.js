@@ -16,7 +16,7 @@ export const getAllUsers = ({
 }) => async dispatch => {
   try {
     const res = await axios.get(
-      `/api/v1/users?fields=_id&hotel=${hotelForGuests}&limit=5&sort=${sortForGuests}&role=user`
+      `/api/v1/users?fields=_id,login&hotel=${hotelForGuests}&limit=5&sort=${sortForGuests}&role=user`
     );
 
     dispatch({

@@ -43,7 +43,8 @@ export const register = (
   passwordConfirm,
   hotel,
   room,
-  days
+  days,
+  roomPrice
 ) => async dispatch => {
   const body = JSON.stringify({
     login,
@@ -51,8 +52,15 @@ export const register = (
     passwordConfirm,
     hotel,
     room,
-    days
+    days,
+    expenses: [
+      {
+        expense: 'Hotel room fee',
+        cost: days * roomPrice
+      }
+    ]
   });
+  console.log(body);
 
   const config = {
     headers: {
@@ -101,9 +109,14 @@ export const login = (login, password) => async dispatch => {
 
 //logout user
 export const logout = () => async dispatch => {
-  dispatch({
-    type: LOGOUT
-  });
+  try {
+    await axios.post('/api/v1/users/logout');
+    dispatch({
+      type: LOGOUT
+    });
+  } catch (err) {
+    dispatch(setAlert(err.response.data.message, 'danger'));
+  }
 };
 
 //updatePassword

@@ -119,7 +119,7 @@ const AdminLayout = ({
                 className="guestPage__services__bookings__btn"
                 onClick={e => handleGetOrder(e)}
               >
-                {order._id}
+                {order.name + ' ' + order.vorname}
               </button>
             ))}
         </div>
@@ -220,7 +220,7 @@ const AdminLayout = ({
                 className="guestPage__services__bookings__btn"
                 onClick={e => handleGetUser(e)}
               >
-                {singleUser._id}
+                {singleUser.login}
               </button>
             ))}
         </div>
