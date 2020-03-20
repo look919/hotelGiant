@@ -6,7 +6,7 @@ MERN Stack hotel application which provides quick overview of servies that owner
 
 #### Running
 
-To run this application, you need to clone the repository, then install both, client and server packages using npm. For some funcionalities like database, authentication or mapbox u need to create config.env file in the root of the project. There is a list of dependencies you should create in that file to get access to all functionalities:
+To run this application, you need to clone the repository, then install both, client and server packages using npm. For some funcionalities like database, authentication or mapbox u need to create config.env file in the root of the project. There is a list of dependencies you should create in that file to get access to all basic functionalities(without mapbox and nodemailer):
 
 - NODE_ENV = development
 - PORT = 5000
@@ -15,7 +15,6 @@ To run this application, you need to clone the repository, then install both, cl
 - JWT_SECRET = examplesecret
 - JWT_EXPIRES_IN = 5d
 - JWT_COOKIE_EXPIRES_IN = 2
-- REACT_APP_MAPBOX_TOKEN = mapbox token
 
 ##### To run the app use `npm run dev`
 
@@ -28,6 +27,7 @@ List of things i learned during development:
 - Working with MongoDB & Mongoose
 - Authentication with JWT
 - Error Handling with Node.js
+- Nodemailer and pug mail templates
 - Mapbox
 - Real Redux state management
 - React-Reveal, React-Responsive and many others

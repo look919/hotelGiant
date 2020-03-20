@@ -14,6 +14,7 @@ import LoginPage from './LoginPage';
 import GuestPage from './guestPage/GuestPage';
 import UpdatePassword from './UpdatePassword';
 import RegisterPage from './RegisterPage';
+import NotFoundPage from './NotFoundPage';
 
 const App = () => {
   if (localStorage.token) {
@@ -40,6 +41,7 @@ const App = () => {
             <Route path="/registerPage" component={RegisterPage} />>
             <Route path="/guestPage" component={GuestPage} />>
             <Route path="/updatePassword" component={UpdatePassword} />>
+            <Route component={NotFoundPage} />>
           </Switch>
         </div>
       </BrowserRouter>
