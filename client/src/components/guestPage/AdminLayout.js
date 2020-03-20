@@ -6,6 +6,7 @@ import { logout } from '../../actions/auth';
 import { getAllUsers, getUser } from '../../actions/users';
 import { getAllOrders, getOrder } from '../../actions/orders';
 import moment from 'moment';
+import uuid from 'uuid';
 
 import Logo from '../../img/logo2.png';
 import {
@@ -108,20 +109,23 @@ const AdminLayout = ({
               Start Date
             </option>
           </select>
-          <h4 className="heading-4 guestPage__services__bookings__header">
-            Found {orders.results || 0} (maximum 5 shows) bookings in that hotel
-          </h4>
-          {orders.results &&
-            orders.data.data.map(order => (
-              <button
-                key={order._id}
-                value={order._id}
-                className="guestPage__services__bookings__btn"
-                onClick={e => handleGetOrder(e)}
-              >
-                {order.name + ' ' + order.vorname}
-              </button>
-            ))}
+          <div className="guestPage__services__bookings__all">
+            <h4 className="heading-4 guestPage__services__bookings__header">
+              Found {orders.results || 0} (maximum 5 shows) bookings in that
+              hotel
+            </h4>
+            {orders.results &&
+              orders.data.data.map(order => (
+                <button
+                  key={order._id}
+                  value={order._id}
+                  className="guestPage__services__bookings__btn"
+                  onClick={e => handleGetOrder(e)}
+                >
+                  {order.name + ' ' + order.vorname}
+                </button>
+              ))}
+          </div>
         </div>
         <div className="guestPage__services__booking">
           <h4 className="heading-4 guestPage__services__booking__header">
@@ -130,6 +134,9 @@ const AdminLayout = ({
 
           {orders.order && (
             <div className="guestPage__services__booking__data">
+              <p className="guestPage__services__booking__data--room">
+                Room-type: {orders.order.data.data.choosenRoom}
+              </p>
               <p>Name: {orders.order.data.data.name}</p>
               <p>Vorname: {orders.order.data.data.vorname}</p>
               <p>Phone: {orders.order.data.data.phone}</p>
@@ -137,9 +144,7 @@ const AdminLayout = ({
               <p>Country: {orders.order.data.data.country}</p>
               <p>Town: {orders.order.data.data.town}</p>
               <p>Zip: {orders.order.data.data.zip}</p>
-              <p>Adress: {orders.order.data.data.adress}</p>
-              <p>Room: {orders.order.data.data.choosenRoom}</p>
-              <p>Info: {orders.order.data.data.info}</p>
+              <p>Address: {orders.order.data.data.adress}</p>
               <p>
                 Start date:{' '}
                 {moment(orders.order.data.data.startDate).format('DD-MM-YY')}
@@ -209,20 +214,22 @@ const AdminLayout = ({
               Start Date
             </option>
           </select>
-          <h4 className="heading-4 guestPage__services__bookings__header">
-            Found {users.results || 0} (maximum 5 shows) guests in that hotel
-          </h4>
-          {users.results &&
-            users.data.data.map(singleUser => (
-              <button
-                key={singleUser._id}
-                value={singleUser._id}
-                className="guestPage__services__bookings__btn"
-                onClick={e => handleGetUser(e)}
-              >
-                {singleUser.login}
-              </button>
-            ))}
+          <div className="guestPage__services__bookings__all">
+            <h4 className="heading-4 guestPage__services__bookings__header">
+              Found {users.results || 0} (maximum 5 shows) guests in that hotel
+            </h4>
+            {users.results &&
+              users.data.data.map(singleUser => (
+                <button
+                  key={singleUser._id}
+                  value={singleUser._id}
+                  className="guestPage__services__bookings__btn"
+                  onClick={e => handleGetUser(e)}
+                >
+                  {singleUser.login}
+                </button>
+              ))}
+          </div>
         </div>
         <div className="guestPage__services__guest">
           <h4 className="heading-4 guestPage__services__guest__header">
@@ -234,6 +241,19 @@ const AdminLayout = ({
               <p>Login: {users.userLoaded.data.data.login}</p>
               <p>Stay duration: {users.userLoaded.data.data.days} days</p>
               <p>Room: {users.userLoaded.data.data.room.name}</p>
+              <p>
+                Registered at:{' '}
+                {moment(users.userLoaded.data.data.createdAt).format(
+                  'DD-MM-YY'
+                )}
+              </p>
+              <p className="grey-heading">Expenses:</p>
+              {users.userLoaded.data.data.expenses.map(ex => (
+                <p key={uuid.v4()}>{ex.expense + ': ' + ex.cost + '$'}</p>
+              ))}
+              <p className="grey-heading">
+                Total Expenses: {users.userLoaded.data.data.totalExpenses + '$'}
+              </p>
             </div>
           )}
         </div>
