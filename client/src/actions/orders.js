@@ -7,7 +7,9 @@ import {
   GET_ALL_ORDERS_SUCCESS,
   GET_ALL_ORDERS_FAIL,
   GET_ORDER_SUCCESS,
-  GET_ORDER_FAIL
+  GET_ORDER_FAIL,
+  CONFIRM_ORDER_SUCCESS,
+  CONFIRM_ORDER_FAIL
 } from './types';
 
 export const createOrder = (
@@ -53,10 +55,28 @@ export const createOrder = (
   }
 };
 
+export const confirmOrder = id => async dispatch => {
+  try {
+    const res = await axios.patch(`/api/v1/orders/confirm/${id}`);
+    dispatch({
+      type: CONFIRM_ORDER_SUCCESS,
+      payload: res.data
+    });
+  } catch (err) {
+    console.log(err, err.response);
+    dispatch(setAlert('There is no order with that id!', 'danger'));
+
+    dispatch({
+      type: CONFIRM_ORDER_FAIL,
+      payload: { msg: 'error', status: 'not found' }
+    });
+  }
+};
+
 export const getAllOrders = ({ hotel, sort }) => async dispatch => {
   try {
     const res = await axios.get(
-      `/api/v1/orders?fields=_id,name,vorname&hotel=${hotel}&limit=5&sort=${sort}`
+      `/api/v1/orders?fields=_id,name,vorname&hotel=${hotel}&limit=5&sort=${sort}&confirmed=true`
     );
 
     dispatch({

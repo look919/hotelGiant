@@ -1,0 +1,31 @@
+.orderConf {
+  display: grid;
+  grid-template-rows: 7rem calc(100vh - 7rem);
+
+  background-image: linear-gradient(
+      to right,
+      rgba($color-primary, 0.8),
+      rgba($color-primary-dark, 0.8)
+    ),
+    url('../img/header.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  align-items: center;
+
+  &__headings {
+    text-align: center;
+    color: $color-secondary-dark;
+  }
+  &__heading {
+    font-size: 6rem;
+    margin-bottom: 4rem;
+    color: $color-secondary-dark;
+  }
+
+  &__subheading {
+    font-size: 2.5rem;
+    font-weight: 400;
+    color: $color-white;
+  }
+}

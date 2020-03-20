@@ -9,6 +9,7 @@ import setAuthToken from '../utils/setAuthToken';
 import Alert from './Alert';
 import DashboardPage from './DashboardPage';
 import BookPage from './BookPage';
+import OrderConf from './OrderConf';
 import LoginPage from './LoginPage';
 import GuestPage from './guestPage/GuestPage';
 import UpdatePassword from './UpdatePassword';
@@ -30,6 +31,11 @@ const App = () => {
           <Switch>
             <Route path="/" component={DashboardPage} exact={true} />
             <Route path="/bookPage" component={BookPage} />>
+            <Route
+              path="/order/:id"
+              render={props => <OrderConf {...props} isAuthed={true} />}
+            />
+            >
             <Route path="/loginpage" component={LoginPage} />>
             <Route path="/registerPage" component={RegisterPage} />>
             <Route path="/guestPage" component={GuestPage} />>

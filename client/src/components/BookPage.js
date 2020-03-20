@@ -252,7 +252,7 @@ const BookPage = ({ createOrder }) => {
             ></textarea>
             {formData.orderDone === true ? (
               <button disabled className="btn bookpage__form__button">
-                Thank you! Your order has been successfully send!
+                Thank you! We send you confirmation link on email.
               </button>
             ) : (
               <button className="btn bookpage__form__button">Submit</button>

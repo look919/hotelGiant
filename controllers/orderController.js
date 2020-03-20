@@ -10,10 +10,13 @@ exports.deleteOrder = factory.deleteOne(Order);
 
 exports.createOrder = catchAsync(async (req, res, next) => {
   const doc = await Order.create(req.body);
-  await new Email(
-    doc,
-    `${req.protocol}://${req.get('host')}/api/v1/orders/confirm/${doc._id}`
-  ).sendOrder();
+
+  const url =
+    process.env.NODE_ENV === 'development'
+      ? `http://127.0.0.1:3000/order/${doc._id}`
+      : `https://hotelgiant.herokuapp.com/order/${doc._id}`;
+
+  await new Email(doc, url).sendOrder();
 
   res.status(201).json({
     status: 'success',
