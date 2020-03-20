@@ -1,0 +1,27 @@
+extends baseEmail
+
+block content
+  p Hi #{firstName}, We are glad you are intrested in our offert🙏
+
+  p There are informations about order you created with id of #{user.id}:
+  p Name: #{user.name} #{user.vorname}
+  p Phone: #{user.phone}
+  p Hotel: #{user.hotel} 
+  p Room: #{user.choosenRoom} 
+  p StartDate: #{user.startDate}
+  p EndDate: #{user.endDate}
+
+  p If everything is right, confirm your order by pressing button bellow
+  table.btn.btn-primary(role='presentation', border='0', cellpadding='0', cellspacing='0')
+    tbody
+      tr
+        td(align='left')
+          table(role='presentation', border='0', cellpadding='0', cellspacing='0')
+            tbody
+              tr
+                td
+                  a(href=`${url}`, target='_blank') Confirm order
+  p If you didn't create that order, please ignore this email!
+
+  p Thank you for your trust!
+  p Tomasz Wirkus, Hotel Giant
