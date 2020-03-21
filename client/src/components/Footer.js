@@ -51,7 +51,7 @@ const Footer = () => (
     </nav>
     <img src={Logo} className="footer__logo" alt="logo" />
     <p className="footer__credits">
-      Build by Tomasz Wirkus 2019. All rights reserved &copy;
+      Build by Tomasz Wirkus 2020. All rights reserved &copy;
     </p>
   </footer>
 );
