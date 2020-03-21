@@ -29,6 +29,10 @@
 
     transition: all 1s;
 
+    @media only screen and (max-width: $bp-700) {
+      cursor: default;
+    }
+
     &--1 {
       grid-row: 3 / 6;
       grid-column: 5 / 8;
@@ -83,6 +87,12 @@
       border: 1px solid $color-black;
       z-index: 10;
       transform: scale(1.7);
+
+      @media only screen and (max-width: $bp-700) {
+        &:hover {
+          transform: none;
+        }
+      }
     }
     &--low-scale {
       transition: all 0.4s;
@@ -90,6 +100,12 @@
       &:hover {
         z-index: 10;
         transform: scale(1.1);
+
+        @media only screen and (max-width: $bp-700) {
+          &:hover {
+            transform: none;
+          }
+        }
       }
     }
     &--medium-scale {
@@ -98,6 +114,12 @@
       &:hover {
         z-index: 10;
         transform: scale(1.25);
+      }
+
+      @media only screen and (max-width: $bp-700) {
+        &:hover {
+          transform: none;
+        }
       }
     }
   }

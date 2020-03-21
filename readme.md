@@ -28,6 +28,6 @@ List of things i learned during development:
 - Authentication with JWT
 - Error Handling with Node.js
 - Nodemailer and pug mail templates
-- Mapbox
+- Mapbox, working with development
 - Real Redux state management
 - React-Reveal, React-Responsive and many others

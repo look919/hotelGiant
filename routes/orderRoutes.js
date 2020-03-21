@@ -4,8 +4,8 @@ const authController = require('./../controllers/authController');
 
 const router = express.Router();
 
-router.route('/confirm/:id').patch(orderController.confirmOrder);
 router.route('/').post(orderController.createOrder);
+router.route('/confirm/:id').patch(orderController.confirmOrder);
 
 router.use(authController.protect);
 router.use(authController.restrictTo('admin'));

@@ -8,7 +8,7 @@ const NotFoundPage = () => {
         <h1 className="heading-2 notFound__heading">404 Page not found</h1>
         <p className="notFound__p">
           It seems that page that you are looking for does not exists or is not
-          aviable right now.
+          available right now.
         </p>
         <NavLink to="/" className="notFound__link">
           Go to the main page

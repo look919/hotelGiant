@@ -136,6 +136,9 @@
 
       transition: all 0.4s;
 
+      @media only screen and (max-width: $bp-1500) {
+        width: 80%;
+      }
       @media only screen and (max-width: $bp-900) {
         margin: 1rem 0;
       }
@@ -151,7 +154,9 @@
         background-color: none;
         color: $color-grey-light-2;
       }
-      background-color: $color-primary-dark;
+      border: 1px solid $color-black;
+      color: $color-black;
+      background-color: $color-primary;
       background-image: none;
 
       &:focus {
