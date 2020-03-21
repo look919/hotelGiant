@@ -49,7 +49,7 @@ body {
 
     grid-template-rows:
       [nav-start] 7rem [nav-end header-start] calc(75vh - 10rem)
-      [header-end description-start] min-content
+      [header-end description-start] max-content
       [description-end locations-start] min-content [locations-end features-start] min-content[features-end rooms-start]
       min-content [rooms-end reviews-start] min-content [reviews-end contact-start] min-content [contact-end gallery-start]
       max-content [gallery-end footer-start] 12rem [footer-end];

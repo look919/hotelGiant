@@ -1,5 +1,4 @@
 import React from 'react';
-import Slide from 'react-reveal/Slide';
 
 import hotelOne from '../img/hotel-1.jpg';
 import hotelTwo from '../img/hotel-2.jpg';
@@ -26,25 +25,22 @@ const Description = () => (
         className="description__photo description__photo--3"
         alt="hotel-3"
       />
-      <Slide bottom>
-        <div className="description__info">
-          <p className="description__info__paragraph">
-            Hotel Giant is number one rated Lorem ipsum dolor sit amet,
-            consectetur adipiscing elit. Quisque convallis tellus at turpis
-            consectetur finibus. Curabitur sed eleifend ipsum. Phasellus ornare
-            justo nec odio dapibus convallis. Maecenas vel sodales risus,
-            pulvinar consectetur augue. Aenean hendrerit tincidunt nunc sed
-            condimentum. Suspendisse feugiat tempor neque, sit amet accumsan
-            metus maximus vitae. Nulla turpis ligula, ultrices nec leo at,
-            posuere viverra diam. Fusce consectetur, massa ac dictum ultrices,
-            nibh libero pellentesque dui, nec aliquet metus dui id eros. Nam
-            tincidunt iaculis finibus. Vestibulum eu vulputate sapien. Praesent
-            bibendum ligula libero, mattis bibendum magna feugiat sit amet.
-            Praesent eu feugiat nisl. In purus ipsum, lacinia ac nibh vel,
-            rhoncus finibus enim.
-          </p>
-        </div>
-      </Slide>
+      <div className="description__info">
+        <p className="description__info__paragraph">
+          Hotel Giant is number one rated Lorem ipsum dolor sit amet,
+          consectetur adipiscing elit. Quisque convallis tellus at turpis
+          consectetur finibus. Curabitur sed eleifend ipsum. Phasellus ornare
+          justo nec odio dapibus convallis. Maecenas vel sodales risus, pulvinar
+          consectetur augue. Aenean hendrerit tincidunt nunc sed condimentum.
+          Suspendisse feugiat tempor neque, sit amet accumsan metus maximus
+          vitae. Nulla turpis ligula, ultrices nec leo at, posuere viverra diam.
+          Fusce consectetur, massa ac dictum ultrices, nibh libero pellentesque
+          dui, nec aliquet metus dui id eros. Nam tincidunt iaculis finibus.
+          Vestibulum eu vulputate sapien. Praesent bibendum ligula libero,
+          mattis bibendum magna feugiat sit amet. Praesent eu feugiat nisl. In
+          purus ipsum, lacinia ac nibh vel, rhoncus finibus enim.
+        </p>
+      </div>
     </div>
   </section>
 );
