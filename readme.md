@@ -21,13 +21,14 @@ To run this application, you need to clone the repository, then install both, cl
 #### Things I learned during that project
 
 Thats my first MERN stack application and its the biggest one so far. It gave me plenty of fun even though connecting my backend and frontend knowledge in fully functional app by my own was quite hard.
+
 List of things i learned during development:
 
 - Connecting Node.js with React
 - Working with MongoDB & Mongoose
 - Authentication with JWT
 - Error Handling with Node.js
-- Nodemailer and pug mail templates
-- Mapbox, working with development
+- Nodemailer and pug email templates
+- Mapbox, working with coordinates
 - Real Redux state management
-- React-Reveal, React-Responsive and many others
+- React-Reveal, React-Responsive and others 3rd party components
