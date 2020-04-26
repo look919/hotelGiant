@@ -30,6 +30,7 @@ body {
 .container {
   display: grid;
   position: relative;
+  background-color: $color-background;
 
   grid-template-rows:
     [header-start nav-start] 100vh [header-end nav-end description-start] min-content
@@ -141,5 +142,5 @@ body {
 }
 ::selection {
   background-color: $color-primary-dark;
-  color: $color-secondary-dark;
+  color: $color-background;
 }

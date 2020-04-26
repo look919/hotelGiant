@@ -15,7 +15,12 @@
     grid-column: 1 / -1;
     z-index: 3;
 
-    background-color: $color-primary;
+    background-image: linear-gradient(
+      to right bottom,
+      rgba(#1a53ff, 0.9),
+      rgba(#000060, 0.9)
+    );
+
     width: 80%;
     align-self: start;
 
