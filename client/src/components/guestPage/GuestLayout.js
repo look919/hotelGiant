@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { NavLink, Redirect } from 'react-router-dom';
 import { UsersIcon, HomePageIcon, PasswordIcon } from '../../img/Icons';
+import { v4 as uuidv4 } from 'uuid';
 import { logout } from './../../actions/auth';
 import { updateUserExpenses } from './../../actions/users';
 
@@ -21,7 +22,7 @@ const GuestLayout = ({ user, auth, logout, updateUserExpenses }) => {
     const checkIfUserHasExpenses = async () => {
       if (user.expenses.length === 0) {
         const roomFee = [
-          { expense: 'Hotel room fee', cost: user.room.price * user.days }
+          { expense: 'Hotel room fee', cost: user.room.price * user.days },
         ];
         totalExpenses = user.room.price * user.days;
         await updateUserExpenses(user._id, roomFee, totalExpenses);
@@ -35,7 +36,7 @@ const GuestLayout = ({ user, auth, logout, updateUserExpenses }) => {
     codeInputRestaurant: false,
     codeInputGameRoom: false,
     codeInputGym: false,
-    devInfo: false
+    devInfo: false,
   });
 
   const handleSetExpenseFromCodeService = (
@@ -79,16 +80,16 @@ const GuestLayout = ({ user, auth, logout, updateUserExpenses }) => {
         codeInputRestaurant: false,
         codeInputGameRoom: false,
         devInfo: false,
-        service: ''
+        service: '',
       });
     } else {
       setPurchaseOptions({
-        devInfo: true
+        devInfo: true,
       });
     }
   };
 
-  const handleRestaurantButton = e => {
+  const handleRestaurantButton = (e) => {
     e.preventDefault();
     if (!purchaseOptions.codeInputRestaurant) {
       setPurchaseOptions({
@@ -96,7 +97,7 @@ const GuestLayout = ({ user, auth, logout, updateUserExpenses }) => {
         codeInputRestaurant: true,
         codeInputGameRoom: false,
         codeInputGym: false,
-        service: ''
+        service: '',
       });
     } else {
       handleSetExpenseFromCodeService(
@@ -109,7 +110,7 @@ const GuestLayout = ({ user, auth, logout, updateUserExpenses }) => {
       );
     }
   };
-  const handleGameRoomButton = e => {
+  const handleGameRoomButton = (e) => {
     e.preventDefault();
     if (!purchaseOptions.codeInputGameRoom) {
       setPurchaseOptions({
@@ -117,7 +118,7 @@ const GuestLayout = ({ user, auth, logout, updateUserExpenses }) => {
         codeInputGameRoom: true,
         codeInputRestaurant: false,
         codeInputGym: false,
-        service: ''
+        service: '',
       });
     } else {
       handleSetExpenseFromCodeService(
@@ -130,7 +131,7 @@ const GuestLayout = ({ user, auth, logout, updateUserExpenses }) => {
       );
     }
   };
-  const handleGymButton = e => {
+  const handleGymButton = (e) => {
     e.preventDefault();
     if (!purchaseOptions.codeInputGym) {
       setPurchaseOptions({
@@ -138,7 +139,7 @@ const GuestLayout = ({ user, auth, logout, updateUserExpenses }) => {
         codeInputGym: true,
         codeInputRestaurant: false,
         codeInputGameRoom: false,
-        service: ''
+        service: '',
       });
     } else {
       handleSetExpenseFromCodeService(
@@ -151,13 +152,13 @@ const GuestLayout = ({ user, auth, logout, updateUserExpenses }) => {
       );
     }
   };
-  const onInputChange = e => {
+  const onInputChange = (e) => {
     setPurchaseOptions({
       ...purchaseOptions,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   };
-  const onSubmit = async e => {
+  const onSubmit = async (e) => {
     e.preventDefault();
     logout();
   };
@@ -200,11 +201,11 @@ const GuestLayout = ({ user, auth, logout, updateUserExpenses }) => {
                 className="guestPage__services__item__input"
                 placeholder="code of the service"
                 maxLength={4}
-                onChange={e => onInputChange(e)}
+                onChange={(e) => onInputChange(e)}
               />
             )}
             <button
-              onClick={e => handleRestaurantButton(e)}
+              onClick={(e) => handleRestaurantButton(e)}
               className="btn guestPage__services__item__btn"
             >
               Purchase online
@@ -249,11 +250,11 @@ const GuestLayout = ({ user, auth, logout, updateUserExpenses }) => {
                 placeholder="code of the service"
                 maxLength={4}
                 minLength={4}
-                onChange={e => onInputChange(e)}
+                onChange={(e) => onInputChange(e)}
               />
             )}
             <button
-              onClick={e => handleGameRoomButton(e)}
+              onClick={(e) => handleGameRoomButton(e)}
               className="btn guestPage__services__item__btn"
             >
               Purchase online
@@ -298,11 +299,11 @@ const GuestLayout = ({ user, auth, logout, updateUserExpenses }) => {
                 placeholder="code of the service"
                 maxLength={4}
                 minLength={4}
-                onChange={e => onInputChange(e)}
+                onChange={(e) => onInputChange(e)}
               />
             )}
             <button
-              onClick={e => handleGymButton(e)}
+              onClick={(e) => handleGymButton(e)}
               className="btn guestPage__services__item__btn"
             >
               Purchase online
@@ -331,9 +332,9 @@ const GuestLayout = ({ user, auth, logout, updateUserExpenses }) => {
           <h3 className="heading-4 guestPage__info__heading">Your Expenses</h3>
           <li className="guestPage__info__list">
             {user.expenses.length > 0 &&
-              user.expenses.map(exp => {
+              user.expenses.map((exp) => {
                 return (
-                  <ul key={exp.expense} className="guestPage__info__list__item">
+                  <ul key={uuidv4()} className="guestPage__info__list__item">
                     {exp.expense}: {exp.cost}$
                   </ul>
                 );
@@ -354,7 +355,7 @@ const GuestLayout = ({ user, auth, logout, updateUserExpenses }) => {
             <PasswordIcon />
             <label className="sidenav__users__label">Change password</label>
           </NavLink>
-          <button onClick={e => onSubmit(e)} className="sidenav__book">
+          <button onClick={(e) => onSubmit(e)} className="sidenav__book">
             <UsersIcon />
             <label className="sidenav__users__label">Logout</label>
           </button>
@@ -366,12 +367,12 @@ const GuestLayout = ({ user, auth, logout, updateUserExpenses }) => {
 GuestLayout.propTypes = {
   user: PropTypes.object.isRequired,
   logout: PropTypes.func.isRequired,
-  updateUserExpenses: PropTypes.func.isRequired
+  updateUserExpenses: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   auth: state.auth.isAuthenticated,
-  user: state.auth.user
+  user: state.auth.user,
 });
 
 export default connect(mapStateToProps, { logout, updateUserExpenses })(

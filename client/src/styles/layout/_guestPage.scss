@@ -61,7 +61,7 @@
     &__heading {
       font-weight: 400;
       text-align: center;
-      color: $color-primary;
+      color: $color-primary-dark;
       margin-bottom: 1.5rem;
     }
 
@@ -152,6 +152,7 @@
 
     &__item {
       height: 100%;
+      width: 100%;
       position: relative;
 
       &__photo {
@@ -246,6 +247,8 @@
         }
       }
       &__input {
+        grid-row: 2 / 3;
+        grid-column: 1 / -1;
         font-size: 1.6rem;
         border: 1px solid $color-grey-light-2;
         border-radius: 1rem;
@@ -254,18 +257,19 @@
         padding: 0.4rem 1.2rem;
         resize: none;
         color: $color-grey-light-1;
-        grid-row: 2 / 3;
-        grid-column: 1 / -1;
-
-        @media only screen and (max-width: $bp-1100) {
-          width: 80%;
-        }
 
         background-image: linear-gradient(
           to right bottom,
           rgba($color-black, 0.9),
           rgba($color-black, 0.85)
         );
+
+        @media only screen and (max-width: $bp-1100) {
+          width: 80%;
+        }
+        &::placeholder {
+          color: $color-grey-light-2;
+        }
 
         &:focus {
           outline: none;
