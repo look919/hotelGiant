@@ -45,7 +45,7 @@
       &__icon {
         height: 3rem;
         width: 3rem;
-        fill: $color-white;
+        fill: $color-black;
 
         &:hover {
           animation: pulse 1s ease-out infinite both;
@@ -54,14 +54,18 @@
       }
       &__heading {
         margin: 0.5rem 0;
+        color: $color-grey-light-1;
+        font-weight: 300;
+        letter-spacing: 2px;
         @media only screen and (max-width: $bp-500) {
           font-size: 1.8rem;
         }
       }
       &__paragraph {
-        font-size: 1.2rem;
+        font-size: 1.4rem;
         padding: 0 0.5rem;
-        word-wrap: wrap;
+        color: $color-grey-light-1;
+        font-weight: 300;
 
         @media only screen and (max-width: $bp-500) {
           color: $color-grey-light-1;

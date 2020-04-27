@@ -11,5 +11,8 @@
     @media only screen and (max-width: $bp-1500) {
       grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
     }
+    @media only screen and (max-width: $bp-600) {
+      grid-template-columns: repeat(auto-fit, minmax(35rem, 1fr));
+    }
   }
 }
