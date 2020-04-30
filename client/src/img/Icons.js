@@ -110,7 +110,7 @@ export const AllInclusiveIcon = () => (
   </svg>
 );
 
-export const ArrowLeft = props => (
+export const ArrowLeft = (props) => (
   <svg
     className="sidenav__users__icon"
     width="9rem"

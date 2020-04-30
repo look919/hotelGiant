@@ -196,7 +196,7 @@
       z-index: 15;
       height: 3rem;
       width: 3rem;
-      fill: darken($color-primary-dark, 20%);
+      fill: darken($color-primary-dark, 5%);
 
       @media only screen and (max-width: $bp-1500) {
         height: 2.4rem;

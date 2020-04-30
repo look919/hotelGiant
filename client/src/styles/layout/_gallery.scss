@@ -16,6 +16,12 @@
 
     @media only screen and (max-width: $bp-500) {
       height: 30rem;
+
+      ::-webkit-full-page-media,
+      _:future,
+      :root .safari_only {
+        display: none;
+      }
     }
   }
 
