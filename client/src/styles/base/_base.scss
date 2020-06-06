@@ -46,7 +46,7 @@ body {
     grid-row-gap: 5rem;
   }
   @media only screen and (max-width: $bp-700) {
-    grid-row-gap: 3rem;
+    grid-row-gap: 7rem;
 
     grid-template-rows:
       [nav-start] 7rem [nav-end header-start] calc(75vh - 10rem)

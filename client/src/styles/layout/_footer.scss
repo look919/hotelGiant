@@ -24,13 +24,17 @@
   }
   &__nav {
     grid-column: 1 / 2;
-    width: 100%;
+    width: 85%;
     padding: 1rem 3rem;
     padding-top: 4rem;
 
     @media only screen and(max-width: $bp-1100) {
       padding-top: 3rem;
       font-size: 1.4rem;
+    }
+    @media only screen and (max-width: $bp-500) {
+      padding: 1rem 0.5rem;
+      padding-top: 3rem;
     }
 
     &__list {
@@ -46,7 +50,6 @@
       }
       @media only screen and (max-width: $bp-500) {
         font-size: 1rem;
-        padding: initial 1.5rem;
       }
       @media only screen and (max-width: $bp-400) {
         font-size: 0.8rem;
@@ -65,6 +68,7 @@
     }
   }
   &__credits {
+    text-align: center;
     padding: 1rem 3rem;
     padding-top: 4rem;
     border-bottom: 1px solid $color-white;
@@ -78,10 +82,12 @@
     }
     @media only screen and (max-width: $bp-500) {
       font-size: 1rem;
-      padding: initial 1.5rem;
+      padding: 1rem 0.5rem;
+      padding-top: 3rem;
     }
     @media only screen and (max-width: $bp-400) {
       font-size: 0.8rem;
+      text-align: center;
     }
   }
 }
