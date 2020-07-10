@@ -45,11 +45,11 @@
       &__icon {
         height: 3rem;
         width: 3rem;
-        fill: $color-grey-light-2;
+        fill: #fff;
 
         &:hover {
           animation: pulse 1s ease-out infinite both;
-          fill: $color-secondary-dark;
+          fill: #aaa;
         }
       }
       &__heading {
